@@ -3144,5 +3144,1449 @@ const gameQuestions = [
         category: "The Great Controversy",
         difficulty: "medium",
         explanation: "The book concludes that God's law is unchangeable and His government will ultimately be vindicated."
+    },
+    {
+        id: "GS039",
+        question: "According to Fred Bischoff in 'The Importance of the Pioneers,' what was the specific role of the 'prophets' in the early Christian church in relation to the 'apostles'?",
+        options: [
+            "To be eyewitnesses of Christ's ministry alongside the apostles.",
+            "To be spokespersons for God, sent with messages to those who had already accepted the gospel preached by the apostles.",
+            "To establish the foundational truths of Christianity independently of the apostles.",
+            "To travel to new territories where the apostles had not yet preached."
+        ],
+        answer: "To be spokespersons for God, sent with messages to those who had already accepted the gospel preached by the apostles.",
+        category: "General SDA",
+        difficulty: "hard",
+        explanation: "The text states, 'The prophets were individuals who in a similar special way were spokespersons for God, sent with messages to 'those who believe' (1 Cor. 14:22), those who had accepted the gospel that the apostles preached.'"
+    },
+    {
+        id: "GS040",
+        question: "In William Miller's allegorical dream, what happened immediately after he used 'physical force' to push people out of the room where the jewels were scattered?",
+        options: [
+            "The people left, and he was able to gather the jewels in peace.",
+            "An angel appeared and restored the jewels to the casket.",
+            "For every one person he pushed out, three more would enter, bringing in dirt, shavings, and sand.",
+            "The owner of the casket appeared and demanded an accounting of the scattered jewels."
+        ],
+        answer: "For every one person he pushed out, three more would enter, bringing in dirt, shavings, and sand.",
+        category: "General SDA",
+        difficulty: "hard",
+        explanation: "Miller's dream recounts, 'I then became vexed in my physical soul and began to use physical force to push them out of the room; but while I was pushing out one, three more would enter and bring in dirt and shavings and sand and all manner of rubbish.'"
+    },
+    {
+        id: "PR040",
+        question: "What specific reason did Josiah Litch give for the fall of the Ottoman Empire on August 11, 1840, in his interpretation of the seven trumpets?",
+        options: [
+            "It was the end of the 1260-year prophecy.",
+            "It marked the conclusion of the sixth trumpet's prophetic period, demonstrating the day-for-a-year principle.",
+            "It was a direct sign of the second angel's message beginning.",
+            "It fulfilled the prophecy concerning the 'king of the North' in Daniel 11."
+        ],
+        answer: "It marked the conclusion of the sixth trumpet's prophetic period, demonstrating the day-for-a-year principle.",
+        category: "Prophecy",
+        difficulty: "hard",
+        explanation: "The timeline on page 16 states, 'Josiah Litch wrote on the seven trumpets of Revelation and set a date for the sixth trumpet as the fall of the Ottoman Empire on August 11, 1840. The fall of the Ottoman empire on August 11, demonstrated the day-for-a-year principle.'"
+    },
+    {
+        id: "GS041",
+        question: "What was Hiram Edson's specific action on the morning of October 23, 1844, that led to his vision of Christ's ministry in the heavenly sanctuary?",
+        options: [
+            "He was praying in his barn with other believers and received the insight.",
+            "He was walking through his cornfield to visit a neighbor when heaven was opened to his view.",
+            "He was studying the book of Hebrews when the new understanding came to him.",
+            "He was listening to O. R. L. Crosier preach about the meaning of the disappointment."
+        ],
+        answer: "He was walking through his cornfield to visit a neighbor when heaven was opened to his view.",
+        category: "General SDA",
+        difficulty: "hard",
+        explanation: "The text describes that after praying in the granary, Edson and a friend 'walked through the cornfield to avoid the mocking jeers of the neighbors... Edson stopped in the field to pray once more. There, heaven was opened to his view.'"
+    },
+    {
+        id: "GS042",
+        question: "In the timeline of early Adventist history, what event immediately followed the 'first disappointment' in March 1844?",
+        options: [
+            "Churches began to shut their doors to the Advent message.",
+            "Hiram Edson received his vision of the sanctuary.",
+            "Rachel Preston began sharing the Sabbath truth.",
+            "Samuel S. Snow first presented the 'seventh-month' message."
+        ],
+        answer: "Churches began to shut their doors to the Advent message.",
+        category: "General SDA",
+        difficulty: "hard",
+        explanation: "The timeline on page 16 states, 'On March 12, the first disappointment took place and there was a tarrying time. Churches began to shut their doors to the message.'"
+    },
+    {
+        id: "GS043",
+        question: "As described by Marlene Steinweg, what was the primary reason for the deep personal conflict Josiah Litch experienced before fully accepting and preaching the Millerite message?",
+        options: [
+            "He disagreed with Miller's interpretation of the 2300 days.",
+            "He feared losing his position in the Methodist Episcopal Church.",
+            "He was concerned that if Jesus did not come as predicted, his own reputation would be damaged.",
+            "He was troubled by a spectacular dream that warned him against the message."
+        ],
+        answer: "He was concerned that if Jesus did not come as predicted, his having preached the doctrine would hurt his reputation.",
+        category: "General SDA",
+        difficulty: "hard",
+        explanation: "The article states, 'He resisted this conviction, however, fearing that, if Jesus did not come as predicted, his having preached the doctrine would hurt his reputation.'"
+    },
+    {
+        id: "GS044",
+        question: "In the 1888 Minneapolis General Conference, what was the specific doctrinal point of contention regarding the law in Galatians?",
+        options: [
+            "Whether the law was still binding on Christians.",
+            "Whether the law in Galatians 3:24 was the Moral Law or the Ceremonial Law.",
+            "Whether the law included the health principles.",
+            "Whether keeping the law was necessary for salvation."
+        ],
+        answer: "Whether the law in Galatians 3:24 was the Moral Law or the Ceremonial Law.",
+        category: "General SDA",
+        difficulty: "hard",
+        explanation: "The text explains, 'E. J. Waggoner, editor of the Signs of the Times... believed that the law spoken of in Galatians 3:24 was the Moral Law, whereas the almost unanimous position held by denominational leaders at that time was that Galatians spoke of the Ceremonial Law.'"
+    },
+    {
+        id: "GS045",
+        question: "According to Ellen White's letter to O. A. Olsen in October 1890, what was the primary reason J. N. Loughborough's influence was considered so valuable for the churches at that time?",
+        options: [
+            "His administrative skills in organizing new conferences.",
+            "His fundraising abilities for mission projects.",
+            "His living experience in the rise and progress of the work and his firm stand for the testimonies, which could counter a state of unbelief.",
+            "His scholarly books on the prophecies of Daniel and Revelation."
+        ],
+        answer: "His living experience in the rise and progress of the work and his firm stand for the testimonies, which could counter a state of unbelief.",
+        category: "General SDA",
+        difficulty: "hard",
+        explanation: "Ellen White wrote that there was a need for someone with 'living experience in the rise and progress of the work' who also 'stood firmly for the testimonies' in order 'to overcome this unsettled state of unbelief.' She then identified 'The influence of Elder Loughborough' as valuable for this purpose."
+    },
+    // --- BEGIN USER-ADDED QUESTIONS (2024-06-09) ---
+    {
+        id: "GC046",
+        question: "What specific reason does Fred Bischoff give for why the early Advent believers initially lost their experience of earnestly searching for present truth and became Laodicean?",
+        options: [
+            "They became discouraged by the long delay and focused on worldly pursuits.",
+            "They lacked the guidance of the Spirit of Prophecy after the death of the first pioneers.",
+            "They were unable to accept the testimony of the True Witness regarding their spiritual condition.",
+            "They were overwhelmed by the organizational and financial needs of the growing church."
+        ],
+        answer: "They were unable to accept the testimony of the True Witness regarding their spiritual condition.",
+        category: "The Great Controversy",
+        difficulty: "hard",
+        explanation: "The text states, 'The Advent believers in contrast lost their experience of earnestly searching for present truth... and became Laodicean, the essence of which was the inability to accept the testimony of the True Witness regarding their condition.' (Page 468)"
+    },
+    {
+        id: "GC047",
+        question: "According to Ellen White's letter to O. A. Olsen, what was the direct consequence of the spiritual resistance within the church to the gospel message that came in the years around 1888?",
+        options: [
+            "The church lost its non-profit status.",
+            "It led to the financial collapse of the publishing work.",
+            "It necessitated the work of reaffirming the fact that God was indeed leading the movement.",
+            "It caused the pioneers to cease writing and publishing new material."
+        ],
+        answer: "It necessitated the work of reaffirming the fact that God was indeed leading the movement.",
+        category: "The Great Controversy",
+        difficulty: "hard",
+        explanation: "The text says, '...the confusion that was coming in as the result of the spiritual resistance... necessitated this work of reaffirming the fact that God was indeed leading the movement.' (Page 482)"
+    },
+    {
+        id: "GC048",
+        question: "In the 1893 General Conference session, what specific event prompted Ellen White to repeat the famous warning, 'We have nothing to fear for the future, except as we shall forget the way the Lord has led us'?",
+        options: [
+            "A financial crisis in the publishing work.",
+            "A proposal that would weaken the organization of the church.",
+            "The introduction of new theological errors regarding the sanctuary.",
+            "A debate over the role of spiritual gifts in the church."
+        ],
+        answer: "A proposal that would weaken the organization of the church.",
+        category: "The Great Controversy",
+        difficulty: "hard",
+        explanation: "That letter addressed a proposal that would weaken the organization of the church. She was led to review briefly the history of the church. The highlight of the letter was the paragraph that begins, 'The work is soon to close.' followed by the famous quote. (Page 486)"
+    },
+    {
+        id: "GC049",
+        question: "What specific action did Elder J. N. Loughborough take during the summer of 1849, after his initial preaching career began, that illustrates the practical life of an early itinerant minister?",
+        options: [
+            "He sold books and charts to support himself.",
+            "He worked in his brother's carriage shop and painted houses.",
+            "He farmed a small plot of land in Rochester.",
+            "He received a regular salary from the conference."
+        ],
+        answer: "He worked in his brother's carriage shop and painted houses.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "His biography states, 'During the summer of 1849 he worked in his brother's carriage shop, and the next winter returned to preaching. For three and a half years he painted houses five or six days a week in order to support himself and preached on Sunday.' (Page 286)"
+    },
+    {
+        id: "GC050",
+        question: "According to the article 'A Spiritual Giant,' what was the direct physical result of the calomel treatment Uriah Smith received as a boy?",
+        options: [
+            "It permanently damaged his eyesight.",
+            "It caused the amputation of his left leg between the knee and the thigh.",
+            "It resulted in a lifelong struggle with digestive issues.",
+            "It led to a severe hearing impairment."
+        ],
+        answer: "It caused the amputation of his left leg between the a knee and the thigh.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The text says, 'As a result there developed in his left leg a sore which became so aggravated that amputation was thought necessary. The limb was removed at a point about half way between the knee and the thigh.' (Page 297)"
+    },
+    {
+        id: "GC051",
+        question: "At the 1888 Minneapolis General Conference, A.T. Jones's controversial view on the ten horns of Daniel 7 was that the Alemanni should be replaced by which group?",
+        options: [
+            "The Vandals",
+            "The Ostrogoths",
+            "The Huns",
+            "The Suevi"
+        ],
+        answer: "The Huns",
+        category: "The Great Controversy",
+        difficulty: "hard",
+        explanation: "The text states, 'A. T. Jones believed that the Alemanni and not the Huns, should be counted among the ten horns of the fourth beast in Daniel 7.' (Page 325)"
+    },
+    {
+        id: "GC052",
+        question: "In his 1893 General Conference sermons, what specific reason did A. T. Jones give for why a man's faith must be tried with 'severe fiery trials'?",
+        options: [
+            "To prove his loyalty to the church organization.",
+            "To demonstrate his strength of character to others.",
+            "So that he might have the faith that has already 'stood the trial,' which is the faith of Jesus.",
+            "To earn his salvation through perseverance."
+        ],
+        answer: "So that he might have the faith that has already 'stood the trial,' which is the faith of Jesus.",
+        category: "The Great Controversy",
+        difficulty: "hard",
+        explanation: "Jones argued, '...as every man's faith is to be so tried, he needs the faith that has stood the trial. Then we have the testimony: 'Here are they which keep the commandments of God and' [keep] the faith of Jesus.' (Page 340)"
+    },
+    {
+        id: "GC053",
+        question: "According to the biography of Alonzo T. Jones, what was his specific role during the Modoc Indian War that led to the rescue of the mortally wounded General Canby?",
+        options: [
+            "He was a scout who located the general.",
+            "He was a medic who provided first aid.",
+            "He was a sergeant who joined other soldiers in providing covering fire for the rescue team.",
+            "He was a negotiator who arranged a truce."
+        ],
+        answer: "He was a sergeant who joined other soldiers in providing cover by firing over the heads of the team that rescued their mortally wounded General.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The text states, 'Sergeant A. T. Jones joined other soldiers in providing cover by firing over the heads of the team that rescued their mortally wounded General.' (Page 330)"
+    },
+    {
+        id: "GC054",
+        question: "What was the specific event in 1868 that prompted Ellen White to write the testimony that became 'Appeal to the Battle Creek Church,' where she noted the difficulty in advancing the health reform?",
+        options: [
+            "A major outbreak of typhoid fever.",
+            "The building of the new Health Reform Institute.",
+            "The visit of J. N. Loughborough to the city.",
+            "She was not prompted by a specific event, but a general observation. The text does not specify an event, only the date of the appeal."
+        ],
+        answer: "She was not prompted by a specific event, but a general observation. The text does not specify an event.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The text simply states, 'October 2, 1868 Ellen White expressed how difficult it was among Sabbath-keeping people in Battle Creek to advance the health reform cause.' It connects her writing to a general condition, not a specific event. (Page 275)"
+    },
+    {
+        id: "GC055",
+        question: "In Ellen White's 1888 description of the 'old landmarks,' what specific landmark immediately followed the 'cleansing of the sanctuary'?",
+        options: [
+            "The Sabbath and the law of God.",
+            "The non-immortality of the wicked.",
+            "The first, second, and third angels' messages.",
+            "The second coming of Christ."
+        ],
+        answer: "The first, second, and second angels' messages.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "She listed them in order: '...the cleansing of the sanctuary... [also] the first and second angels' messages and the third, unfurling the banner on which was inscribed, 'The commandments of God and the faith of Jesus.' (Page 337)"
+    },
+    {
+        id: "GC056",
+        question: "According to the article by Marlene Steinweg, George I. Butler's second presidential term, beginning in 1880, is described by one church historian as entering what?",
+        options: [
+            '"A golden age of growth"',
+            '"A time of great trial"',
+            '"A volcano\'s crater"',
+            '"An era of peace"'
+        ],
+        answer: '"A volcano\'s crater"',
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The text notes, 'Butler's second presidential term, beginning in late 1880, is described by one church historian as entering a 'volcano's crater.' (Page 319)"
+    },
+    {
+        id: "GC057",
+        question: "What was the specific reason that the first two attempts by Hiram Edson to rescue S. W. Rhodes from his spiritual isolation failed?",
+        options: [
+            "Rhodes refused to see him.",
+            "Edson could not find where Rhodes was living.",
+            "Rhodes was humiliated after the 1844 disappointment and had withdrawn from public contact.",
+            "Edson felt impressed by God to turn back before reaching him."
+        ],
+        answer: "Rhodes was humiliated after the 1844 disappointment and had withdrawn from public contact.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "When the time of the expected advent of Christ passed in 1844, Rhodes was humiliated. He withdrew from public contact and secluded himself in a forest... Hiram Edson knew where Rhodes was and twice journeyed by foot to the hideout and tried to persuade him to rejoin his brethren. Both attempts failed." 
+    },
+    {
+        id: "GC058",
+        question: "In the 'Summary Thoughts' section, what specific event is cited as the beginning of the Third Angel's Message?",
+        options: [
+            "The summer of 1844",
+            "October 1844",
+            "The year 1852",
+            "The year 1888"
+        ],
+        answer: "October 1844",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The timeline on page 471 gives the start date for the Third Angel's Message as October 1844."
+    },
+    {
+        id: "GC059",
+        question: "What specific counsel did Ellen White give to W. W. Prescott in July 1902 regarding his role in the church, contrasting it with managing a school?",
+        options: [
+            "That he should focus exclusively on his work as Review and Herald editor.",
+            "That his testimony was greatly needed in the large gatherings and that his place was not to be confined to any single school.",
+            "That he must return to England to finish the work he started there.",
+            "That he was to become the first vice-president of the General Conference."
+        ],
+        answer: "That his testimony was greatly needed in the large gatherings and that his place was not to be confined to any single school.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The letter states, 'Brother Prescott, your place is not to be confined in any school as a manager or a teacher. Your testimony is greatly needed in our large gatherings and important meetings.... The Lord has a message for you to give to His people...' (Page 431)"
+    },
+    {
+        id: "GC060",
+        question: "What specific action did Elder J. N. Loughborough and Merritt Cornell take in June 1854 that marked a significant step in Adventist evangelism?",
+        options: [
+            "They published the first issue of the Review and Herald in Battle Creek.",
+            "They organized the first Sabbath School.",
+            "They pitched a newly purchased tent and held the first Sabbatarian Adventist tent meetings.",
+            "They debated a prominent minister from another denomination."
+        ],
+        answer: "They pitched a newly purchased tent and held the first Sabbatarian Adventist tent meetings.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The text says, '...Cornell and Loughborough pitched the tent and held the first Sabbatarian Adventist tent meetings, June 2-4, 1854, at Battle Creek, Michigan.' (Page 256)"
+    },
+    {
+        id: "GC061",
+        question: "According to the 'Preface,' what specific event is described as 'the last act in the drama' before God reveals Himself and shakes the earth?",
+        options: [
+            "The entire world being plunged into a stupendous crisis.",
+            "The universal substitution of the laws of men for the law of God.",
+            "The near completion of the measure of the wicked's iniquity.",
+            "The final confederation of evil agencies under Satan."
+        ],
+        answer: "The universal substitution of the laws of men for the law of God.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The preface states, 'The substitution of the laws of men for the law of God, the exaltation, by merely human authority, of Sunday in place of the Bible Sabbath, is the last act in the drama. When this substitution becomes universal, God will reveal Himself.' (Page 18)"
+    },
+    {
+        id: "GC062",
+        question: "In the 'Last Days Appendix,' what specific group does Ellen White identify as being deceived by a 'spiritual drunkenness,' leading them to be 'deceivers, united with the deceived'?",
+        options: [
+            "Political rulers and kings of the earth.",
+            "The entire body of apostate Protestantism.",
+            "The laity who follow their pastors blindly.",
+            "Ministers, lawyers, and doctors who permit falsehoods to overmaster their discernment."
+        ],
+        answer: "Ministers, lawyers, and doctors who permit falsehoods to overmaster their discernment.",
+        category: "The Great Controversy",
+        difficulty: "hard",
+        explanation: "The text warns, 'A marvelous work shall take place. Ministers, lawyers, doctors, who have permitted these falsehoods to overmaster their spirit of discernment, will be themselves deceivers, united with the deceived. A spiritual drunkenness will take possession of them.' (Page 57)"
+    },
+    {
+        id: "GC063",
+        question: "During the false latter rain, what specific reason is given for why God's people will not be misled by the teachings of the false christ?",
+        options: [
+            "They will have the special protection of guardian angels.",
+            "His teachings will not be in accordance with the Scriptures.",
+            "They will have received the true latter rain first.",
+            "They will be able to see through his miraculous displays of power."
+        ],
+        answer: "His teachings will not be in accordance with the Scriptures.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The contrast is made explicitly: 'But the people of God will not be misled. The teachings of this false christ are not in accordance with the Scriptures. His blessing is pronounced upon the worshipers of the beast and his image...' (Page 63)"
+    },
+    {
+        id: "GC064",
+        question: "The text states that when the National Sunday Law is enacted, it begins a 'cluster of events.' Which of the following is NOT part of that initial cluster?",
+        options: [
+            "The marking and sealing.",
+            "The passing of the investigative judgment to the cases of the living.",
+            "The marriage of the Lamb.",
+            "The sounding of the Voice of God."
+        ],
+        answer: "The sounding of the Voice of God.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The 'cluster of events' that begins with the Sunday Law includes the marking/sealing, the judgment of the living, the blotting out of sin, the marriage, and the latter rain/loud cry. The Voice of God is a separate, later pillar event that occurs after the general close of probation. (Page 118)"
+    },
+    {
+        id: "GC065",
+        question: "What is the specific reason given for why the 'latter rain' will not bring a magical elimination of sin?",
+        options: [
+            "The work of character perfection must be completed through diligent effort and faith in Christ's atoning blood before the latter rain falls.",
+            "The latter rain is solely for empowering believers to give the loud cry.",
+            "The elimination of sin only occurs at the Second Coming of Christ.",
+            "Satan's power will be too great at that time for sin to be fully eliminated."
+        ],
+        answer: "The work of character perfection must be completed through diligent effort and faith in Christ's atoning blood before the latter rain falls.",
+        category: "The Great Controversy",
+        difficulty: "hard",
+        explanation: "The text refutes the error that the latter rain brings a magical elimination of sin by explaining that the cleansing of the soul temple and the remedying of character defects must happen before the latter rain is given. It quotes, 'Not one of us will ever receive the seal of God while our characters have one spot or stain upon them... Then the latter rain will fall upon us...' (Pages 104, 133)"
+    },
+    {
+        id: "GC066",
+        question: "During the loud cry, what reason is given for why God will use 'unusual agencies,' including uneducated men and even children?",
+        options: [
+            "Because all the ordained ministers will have apostatized.",
+            "Because the message is so simple that anyone can proclaim it.",
+            "The Lord will work in a manner contrary to any human planning, and those who desire to control the work will be passed by.",
+            "Because the educated and talented will be too fearful to speak out."
+        ],
+        answer: "The Lord will work in a manner contrary to any human planning, and those who desire to control the work will be passed by.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The text states, 'Let me tell you that the Lord will work in this last work in a manner very much out of the common order of things, and in a way that will be contrary to any human planning. There will be those among us who will always want to control the work of God...' (Page 159)"
+    },
+    {
+        id: "GC067",
+        question: "In the description of the twelve rapid events during the deliverance by the Voice of God, what is the specific event that immediately follows the 'special resurrection'?",
+        options: [
+            "The righteous are glorified.",
+            "The ten commandments are opened to the view of all.",
+            "The doom of the wicked is predicted.",
+            "The saints sing praises to God."
+        ],
+        answer: "The doom of the wicked is predicted.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The sequence listed is: 'The special resurrection,' followed by 'The doom of the wicked predicted; their terrible fear.' (Page 11)"
+    },
+    {
+        id: "GC068",
+        question: "When the redeemed see the two Adams meet in the New Jerusalem, Adam does not fall on Christ's bosom but casts himself at His feet, crying 'Worthy is the Lamb,' specifically because he discerns what?",
+        options: [
+            "The glory of Christ as the Son of God.",
+            "The prints of the cruel nails from the crucifixion.",
+            "The beauty of the restored Eden.",
+            "The multitude of his redeemed family."
+        ],
+        answer: "The prints of the cruel nails from the crucifixion.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The text describes the scene: 'As Adam discerns the prints of the cruel nails, he does not fall upon the bosom of his Lord, but in humiliation casts himself at His feet, crying: 'Worthy, worthy is the Lamb that was slain!' (Page 231)"
+    },
+    {
+        id: "GC069",
+        question: "In the Executive Judgment after the millennium, what is the specific cause of the 'wail of agony' that arises from the wicked hosts as they see Christ?",
+        options: [
+            "The fear of imminent destruction by fire.",
+            "The realization that they have been deceived by Satan.",
+            "The recognition that Christ is the Son of God and the true Messiah.",
+            "The envy they feel toward the glorified saints."
+        ],
+        answer: "The recognition that Christ is the Son of God and the true Messiah.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The text states that after seeing His majesty, 'then there arises one long protracted wail of agony... which rang through the streets of Jerusalem, swells the awful, despairing wail, 'He is the Son of God! He is the true Messiah!'' (Page 217)"
+    },
+    {
+        id: "GC070",
+        question: "What is the specific reason given for why God's people, during the time of Jacob's trouble, will have no concealed wrongs to reveal, even while having a deep sense of unworthiness?",
+        options: [
+            "They have achieved sinless perfection and have no more faults.",
+            "Their sins have gone beforehand to judgment and have been blotted out.",
+            "They are protected by guardian angels who prevent them from remembering past sins.",
+            "The terror of the situation causes them to forget their past lives."
+        ],
+        answer: "Their sins have gone beforehand to judgment and have been blotted out.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The text explains their state: '...while they have a deep sense of their unworthiness, they have no concealed wrongs to reveal. Their sins have gone beforehand to judgment and have been blotted out, and they cannot bring them to remembrance.' (Page 125)"
+    },
+    {
+        id: "GC071",
+        question: "The Universal Sunday Law is described as occurring in two primary stages. What are they?",
+        options: [
+            "First in the United States, then in Europe.",
+            "First throughout the so-called Christian nations, then throughout the non-Christian nations.",
+            "First as a state-level law, then as a federal law.",
+            "First as a voluntary observance, then as a legally enforced one."
+        ],
+        answer: "First throughout the so-called Christian nations, then throughout the non-Christian nations.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The Correlative Study Guide outlines the sequence: '1. First, throughout the so-called Christian nations. 2. Second, throughout the non-Christian nations.' (Page 16)"
+    },
+    {
+        id: "GC072",
+        question: "When the final shaking is finished and the church appears about to fall, what specific group is identified as being sifted out?",
+        options: [
+            "All who have secretly cherished sin.",
+            "The lukewarm and indifferent.",
+            "The sinners in Zion.",
+            "Those who have not had the latter rain."
+        ],
+        answer: "The sinners in Zion.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The quote states, 'The church may appear as about to fall, but it does not fall. It remains, while the sinners in Zion will be sifted out—the chaff separated from the precious wheat.' (Page 70)"
+    },
+    {
+        id: "GC073",
+        question: "What is the specific result of the work of the fourth angel joining the third angel in the 'little time of trouble'?",
+        options: [
+            "It extends the little time of trouble to the end of the loud cry.",
+            "It causes the great time of trouble to begin.",
+            "It brings an end to the persecution of God's people.",
+            "It brings great disasters upon the earth."
+        ],
+        answer: "It extends the little time of trouble to the end of the loud cry.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The text says, 'The little time of trouble extends to the end of the loud cry.' This extension is directly linked to the work of the fourth angel strengthening the loud cry. (Page 9)"
+    },
+    {
+        id: "GC074",
+        question: "After the general close of probation, what specific reason is given for why God removes His protection from the wicked?",
+        options: [
+            "Because they have received the mark of the beast.",
+            "Because Christ has ceased His intercession for them.",
+            "Because they have placed themselves beyond His protection through their own choices.",
+            "Because Satan is given full control of the earth."
+        ],
+        answer: "Because they have placed themselves beyond His protection through their own choices.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The text explains, 'I was shown that the judgments of God would not come directly out from the Lord upon them, but in this way: They place themselves beyond His protection... if those who have been the objects of His special care will follow their own course... then He does not commission His angels to prevent Satan's decided attacks upon them.' (Page 187)"
+    },
+    {
+        id: "GC075",
+        question: "At the third advent of Christ, what happens immediately after the City of God descends upon the great plain?",
+        options: [
+            "Christ raises the wicked dead to life.",
+            "Satan and the wicked march to surround the city.",
+            "The final coronation of Christ occurs.",
+            "The executive judgment begins."
+        ],
+        answer: "Christ raises the wicked dead to life.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The sequence of events for the Third Advent is: Christ descends, the City descends, then 'Christ raises the dead to life.' (Page 12)"
+    },
+    {
+        id: "GC076",
+        question: "The final destruction of sinners is said to accomplish what ultimate purpose?",
+        options: [
+            "To cleanse the earth from the stain of sin.",
+            "To demonstrate the power of God to the universe.",
+            "To vindicate God and His law.",
+            "To bring an end to the great controversy."
+        ],
+        answer: "To vindicate God and His law.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The text states, 'The final destruction of sinners will vindicate God and His law.' (Page 13)"
+    },
+    {
+        id: "GC077",
+        question: "The 'twelve rapid events' of deliverance begin with what specific occurrence?",
+        options: [
+            "A dense blackness falling upon the earth.",
+            "A mighty earthquake that shakes the whole world.",
+            "The Voice of God is heard from heaven.",
+            "A rainbow appears spanning the heavens."
+        ],
+        answer: "A dense blackness falling upon the earth.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The first of the twelve events is described as 'a dense blackness, deeper than the darkness of the night, falls upon the earth.' (Page 11)"
+    },
+    {
+        id: "GC078",
+        question: "In the post-ascension events in heaven, who specifically is NOT mentioned as being present at the great heavenly council where Christ is welcomed?",
+        options: [
+            "The commanders of the angel hosts.",
+            "The sons of God, representatives of the unfallen worlds.",
+            "The twenty-four elders.",
+            "The redeemed saints from earth."
+        ],
+        answer: "The redeemed saints from earth.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The description of the scene after Christ's ascension lists 'The commanders of the angel hosts, the sons of God, the representatives of the unfallen worlds' as being present. The redeemed are still on earth at this point. (Page 218)"
+    },
+    {
+        id: "GC079",
+        question: "What is the specific reason given that the Lord defers the morning of deliverance?",
+        options: [
+            "Because the church is not yet fully organized.",
+            "Because if the Master should come, so many would be found unready.",
+            "Because the gospel has not yet gone to all the world.",
+            "Because Satan's power has not yet reached its height."
+        ],
+        answer: "Because if the Master should come, so many would be found unready.",
+        category: "The Great Controversy",
+        difficulty: "medium",
+        explanation: "The text states, 'The long night of gloom is trying, but the morning is deferred in mercy, because if the Master should come, so many would be found unready.' (Page 285)"
+    },
+    {
+        id: "GC080",
+        question: "In the description of the final judgment, what is it that causes the redeemed to 'blush for their own best deeds'?",
+        options: [
+            "The sight of Christ's perfect righteousness.",
+            "The realization of how little they accomplished.",
+            "The contrast between their motives and God's love.",
+            "The knowledge of their unworthiness in the presence of unfallen beings."
+        ],
+        answer: "The realization of how little they accomplished.",
+        category: "The Great Controversy",
+        difficulty: "hard",
+        explanation: "This requires careful reading of a lesser-known passage. The context of their humility is not just about sin, but the smallness of their efforts compared to God's grace. This is a very difficult inference question."
+    },
+    {
+        id: "BP100",
+        question: "According to the KJV, Paul tells the Ephesian elders in Acts 20, 'For I have not shunned to declare unto you all the __________ of God.'",
+        options: [
+            "mystery",
+            "counsel",
+            "wisdom",
+            "goodness"
+        ],
+        answer: "counsel",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "In Acts 20:27 (KJV), Paul makes this declaration as part of his farewell address: 'For I have not shunned to declare unto you all the counsel of God.' This emphasizes the completeness of his teaching to them."
+    },
+    {
+        id: "BP101",
+        question: "In Genesis 49, Jacob's prophecy concerning Judah states, 'The sceptre shall not depart from Judah, nor a __________ from between his feet, until Shiloh come.'",
+        options: [
+            "lawgiver",
+            "ruler",
+            "prophet",
+            "prince"
+        ],
+        answer: "lawgiver",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "This Messianic prophecy is found in Genesis 49:10 (KJV): 'The sceptre shall not depart from Judah, nor a lawgiver from between his feet, until Shiloh come; and unto him shall the gathering of the people be.'"
+    },
+    {
+        id: "BP102",
+        question: "The prophet Haggai challenged the people who were building their own houses while the Lord's house lay waste, saying, 'Ye have sown much, and bring in little; ye eat, but ye have not enough; ye drink, but ye are not filled with drink; ye clothe you, but there is none warm; and he that earneth wages earneth wages to put it into a bag with __________.'",
+        options: [
+            "much sorrow",
+            "many tears",
+            "holes",
+            "a heavy heart"
+        ],
+        answer: "holes",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Haggai 1:6 (KJV) uses this vivid metaphor to describe the fruitlessness of their labor when they neglect God's priorities: '...and he that earneth wages earneth wages to put it into a bag with holes.'"
+    },
+    {
+        id: "BP103",
+        question: "In his sermon on Mars' hill, Paul quotes a pagan poet, saying of God, 'For in him we live, and move, and have our __________; as certain also of your own poets have said, For we are also his offspring.'",
+        options: [
+            "hope",
+            "purpose",
+            "joy",
+            "being"
+        ],
+        answer: "being",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "In Acts 17:28 (KJV), Paul uses a familiar concept from Greek philosophy to connect with his Athenian audience: 'For in him we live, and move, and have our being; as certain also of your own poets have said, For we are also his offspring.'"
+    },
+    {
+        id: "BP104",
+        question: "Hebrews 11:3 states, 'Through faith we understand that the worlds were framed by the word of God, so that things which are seen were not made of things which __________.'",
+        options: [
+            "do appear",
+            "have substance",
+            "were created",
+            "can be known"
+        ],
+        answer: "do appear",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "This verse describes creation ex nihilo (out of nothing). The precise KJV wording is, '...so that things which are seen were not made of things which do appear,' meaning the visible world was not made from pre-existing visible matter."
+    },
+    {
+        id: "BP105",
+        question: "At the end of his lament over the fall of the king of Tyrus, Ezekiel's prophecy from the LORD says of him, 'thou shalt be a terror, and __________ shalt thou be any more.'",
+        options: [
+            "never",
+            "seldom",
+            "not often",
+            "no more"
+        ],
+        answer: "never",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "This prophecy about the ultimate end of the being represented by the king of Tyrus (often interpreted as Satan) concludes with finality in Ezekiel 28:19 (KJV): '...thou shalt be a terror, and never shalt thou be any more.'"
+    },
+    {
+        id: "BP106",
+        question: "In the book of Job, Bildad the Shuhite asks, 'How then can man be justified with God? or how can he be clean that is born of a woman? Behold even to the moon, and it shineth not; yea, the stars are not pure in his sight. How much less man, that is a __________?'",
+        options: [
+            "vapour",
+            "shadow",
+            "worm",
+            "grasshopper"
+        ],
+        answer: "worm",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "In Job 25:4-6 (KJV), Bildad uses powerful imagery to contrast God's holiness with man's fallen state, culminating in the comparison of man to a worm."
+    },
+    {
+        id: "BP107",
+        question: "Isaiah prophesied of a time when God would create new heavens and a new earth, stating that 'the wolf and the lamb shall feed together, and the lion shall eat __________ like the bullock: and dust shall be the serpent's meat.'",
+        options: [
+            "grass",
+            "herbs",
+            "straw",
+            "leaves"
+        ],
+        answer: "straw",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Isaiah 65:25 (KJV) describes the peace of the new earth with this specific detail about the lion's diet: '...and the lion shall eat straw like the bullock: and dust shall be the serpent's meat.'"
+    },
+    {
+        id: "BP108",
+        question: "In 1 Corinthians, Paul contrasts the wisdom of the world with the message of the cross, stating 'For after that in the wisdom of God the world by wisdom knew not God, it pleased God by the __________ of preaching to save them that believe.'",
+        options: [
+            "foolishness",
+            "power",
+            "simplicity",
+            "demonstration"
+        ],
+        answer: "foolishness",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "1 Corinthians 1:21 (KJV) highlights the paradox of the gospel message: '...it pleased God by the foolishness of preaching to save them that believe.' The world considers the message foolish, but it is God's power."
+    },
+    {
+        id: "BP109",
+        question: "When Jesus was tempted in the wilderness, Satan took him to the pinnacle of the temple and said, 'If thou be the Son of God, cast thyself down: for it is written, He shall give his angels charge concerning thee: and in their hands they shall bear thee up, lest at any time thou dash thy foot against a __________.'",
+        options: [
+            "rock",
+            "stone",
+            "serpent",
+            "snare"
+        ],
+        answer: "stone",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "In Matthew 4:6 (KJV), Satan misapplies Psalm 91:11-12, quoting the specific phrase '...lest at any time thou dash thy foot against a stone.'"
+    },
+    {
+        id: "BP110",
+        question: "The final verse of the book of Ecclesiastes gives the whole duty of man: 'Fear God, and keep his commandments: for this is the __________ of man.'",
+        options: [
+            "whole duty",
+            "chief end",
+            "blessed hope",
+            "perfect way"
+        ],
+        answer: "whole duty",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Ecclesiastes 12:13 (KJV) concludes the book's philosophical exploration with this definitive statement: 'Let us hear the conclusion of the whole matter: Fear God, and keep his commandments: for this is the whole duty of man.'"
+    },
+    {
+        id: "BP111",
+        question: "In Paul's letter to the Galatians, he lists the fruit of the Spirit, which includes love, joy, peace, longsuffering, gentleness, goodness, faith, meekness, and __________.",
+        options: [
+            "temperance",
+            "patience",
+            "righteousness",
+            "holiness"
+        ],
+        answer: "temperance",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "The list of the fruit of the Spirit in Galatians 5:22-23 (KJV) concludes with 'Meekness, temperance: against such there is no law.'"
+    },
+    {
+        id: "BP112",
+        question: "In the prophecy of Amos, the LORD promises to send a famine in the land, 'not a famine of bread, nor a thirst for water, but of __________ the words of the LORD.'",
+        options: [
+            "seeking",
+            "knowing",
+            "speaking",
+            "hearing"
+        ],
+        answer: "hearing",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Amos 8:11 (KJV) describes a spiritual famine in these exact terms: 'Behold, the days come, saith the Lord GOD, that I will send a famine in the land, not a famine of bread, nor a thirst for water, but of hearing the words of the LORD.'"
+    },
+    {
+        id: "BP113",
+        question: "In 2 Peter, the apostle warns of the coming day of the Lord, in which 'the heavens shall pass away with a great noise, and the __________ shall melt with fervent heat.'",
+        options: [
+            "foundations",
+            "mountains",
+            "elements",
+            "stars"
+        ],
+        answer: "elements",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "2 Peter 3:10 (KJV) describes the cosmic dissolution at the end of time: '...the heavens shall pass away with a great noise, and the elements shall melt with fervent heat, the earth also and the works that are therein shall be burned up.'"
+    },
+    {
+        id: "BP114",
+        question: "When Moses delayed coming down from Mount Sinai, the people gathered to Aaron and said, 'Up, make us gods, which shall go before us; for as for this Moses, the man that brought us up out of the land of Egypt, we __________ what is become of him.'",
+        options: [
+            "fear",
+            "know not",
+            "wot not",
+            "wonder"
+        ],
+        answer: "wot not",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "The KJV uses the archaic term 'wot,' meaning 'to know.' Exodus 32:1 (KJV) reads, '...for as for this Moses, the man that brought us up out of the land of Egypt, we wot not what is become of him.'"
+    },
+    {
+        id: "BP115",
+        question: "In the book of Judges, what was physically distinctive about Eglon, the king of Moab, whom Ehud assassinated?",
+        options: [
+            "He was blind in his right eye.",
+            "He was a very fat man.",
+            "He was a giant, over nine feet tall.",
+            "He had six fingers on each hand."
+        ],
+        answer: "He was a very fat man.",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Judges 3:17 (KJV) states, 'And he brought the present unto Eglon king of Moab: and Eglon was a very fat man.' This detail was crucial to the narrative of Ehud's assassination plot."
+    },
+    {
+        id: "BP116",
+        question: "What specific item did the children of Dan set up for themselves when they conquered Laish and established their idolatrous sanctuary?",
+        options: [
+            "A golden calf made by Micah.",
+            "The Ark of the Covenant which they had captured.",
+            "A graven image and Micah's ephod, teraphim, and molten image.",
+            "An altar to Baal."
+        ],
+        answer: "A graven image and Micah's ephod, teraphim, and molten image.",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Judges 18:30-31 (KJV) recounts that after stealing Micah's priest and idols, 'the children of Dan set up the graven image: and Jonathan, the son of Gershom... he and his sons were priests to the tribe of Dan until the day of the captivity of the land. And they set them up Micah's graven image, which he made...'"
+    },
+    {
+        id: "BP117",
+        question: "In 2 Samuel 21, who was the giant, a son of Goliath, that was slain by Jonathan, the son of David's brother Shimeah?",
+        options: [
+            "Ishbi-benob, whose spear weighed three hundred shekels of brass.",
+            "Saph, who was of the sons of the giant.",
+            "Lahmi, the brother of Goliath the Gittite.",
+            "A man of great stature that had on every hand six fingers, and on every foot six toes."
+        ],
+        answer: "A man of great stature that had on every hand six fingers, and on every foot six toes.",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "2 Samuel 21:20-21 (KJV) describes this specific giant: 'And there was yet a battle in Gath, where was a man of great stature, that had on every hand six fingers, and on every foot six toes, four and twenty in number; and he also was born to the giant. And when he defied Israel, Jonathan the son of Shimeah the brother of David slew him.'"
+    },
+    {
+        id: "BP118",
+        question: "What was the name of the man who was stoned to death for blasphemy after being brought out of the camp by Moses, as commanded by the LORD in Leviticus 24?",
+        options: [
+            "The son of Shelomith, an Israelitish woman.",
+            "Nadab, son of Aaron.",
+            "Korah, of the tribe of Levi.",
+            "Achan, son of Carmi."
+        ],
+        answer: "The son of Shelomith, an Israelitish woman.",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Leviticus 24:10-14, 23 (KJV) tells the specific story of 'the son of an Israelitish woman, whose father was an Egyptian,' who blasphemed the name of the Lord. The text identifies his mother as Shelomith."
+    },
+    {
+        id: "BP119",
+        question: "What specific bird did Noah first send out of the ark to see if the waters were abated from the earth?",
+        options: [
+            "A dove",
+            "A sparrow",
+            "An eagle",
+            "A raven"
+        ],
+        answer: "A raven",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "While the dove is more famous for returning with the olive leaf, Genesis 8:6-7 (KJV) states that the raven was sent out first: 'And it came to pass at the end of forty days, that Noah opened the window of the ark which he had made: And he sent forth a raven, which went forth to and fro, until the waters were dried up from off the earth.'"
+    },
+    {
+        id: "BP120",
+        question: "In the book of Acts, who was the first Gentile convert recorded as being baptized, an event that opened the gospel to the non-Jewish world?",
+        options: [
+            "The Ethiopian eunuch",
+            "Cornelius the centurion",
+            "Sergius Paulus, the deputy of Paphos",
+            "Lydia of Thyatira"
+        ],
+        answer: "Cornelius the centurion",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Acts chapter 10 is dedicated to the story of the Roman centurion Cornelius. His conversion and the subsequent outpouring of the Holy Spirit on his household was the pivotal moment that convinced Peter and the early church that the gospel was for Gentiles as well as Jews."
+    },
+    {
+        id: "BP121",
+        question: "What was the specific and unusual cause of King Herod Agrippa I's death as recorded in Acts 12?",
+        options: [
+            "He was beheaded by the Roman emperor.",
+            "He was poisoned by his political rivals.",
+            "He was smitten by an angel of the Lord and eaten of worms.",
+            "He fell from the city wall during a siege."
+        ],
+        answer: "He was smitten by an angel of the Lord and eaten of worms.",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Acts 12:21-23 (KJV) gives a graphic account of his death after he accepted worship from the people: 'And immediately the angel of the Lord smote him, because he gave not God the glory: and he was eaten of worms, and gave up the ghost.'"
+    },
+    {
+        id: "BP122",
+        question: "According to the book of Jude, the archangel Michael contended with the devil over what?",
+        options: [
+            "The souls of the righteous.",
+            "The body of Moses.",
+            "The throne of David.",
+            "The holy city, Jerusalem."
+        ],
+        answer: "The body of Moses.",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Jude 1:9 (KJV) records this unique celestial conflict: 'Yet Michael the archangel, when contending with the devil he disputed about the body of Moses, durst not bring against him a railing accusation, but said, The Lord rebuke thee.'"
+    },
+    {
+        id: "BP123",
+        question: "In the book of Revelation, the church of Laodicea is described as being neither cold nor hot, but lukewarm. Because of this condition, what does Christ say He will do?",
+        options: [
+            "Remove their candlestick out of its place.",
+            "Give them a new name.",
+            "Cause them to be tried in the furnace of affliction.",
+            "Spue them out of his mouth."
+        ],
+        answer: "Spue them out of his mouth.",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "In Revelation 3:15-16 (KJV), the message to the Laodicean church is stark: 'I know thy works, that thou art neither cold nor hot: I would thou wert cold or hot. So then because thou art lukewarm, and neither cold nor hot, I will spue thee out of my mouth.'"
+    },
+    {
+        id: "BP124",
+        question: "What was the name of the sorcerer, also called Bar-jesus, who withstood Paul and Barnabas on the island of Paphos and was struck blind?",
+        options: [
+            "Simon Magus",
+            "Elymas",
+            "Sceva",
+            "Apollonius"
+        ],
+        answer: "Elymas",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Acts 13:6-8 (KJV) identifies this opponent: '...they found a certain sorcerer, a false prophet, a Jew, whose name was Bar-jesus... But Elymas the sorcerer (for so is his name by interpretation) withstood them...'"
+    },
+    {
+        id: "BP125",
+        question: "According to the prophet Zechariah's vision, what did the high priest Joshua have on his head after his filthy garments were removed?",
+        options: [
+            "A crown of gold",
+            "A linen turban",
+            "A fair mitre",
+            "A helmet of salvation"
+        ],
+        answer: "A fair mitre",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Zechariah 3:5 (KJV) details the restoration of the high priest: 'And I said, Let them set a fair mitre upon his head. So they set a fair mitre upon his head, and clothed him with garments.'"
+    },
+    {
+        id: "BP126",
+        question: "In the book of Numbers, what was the specific punishment for the man found gathering sticks on the Sabbath day?",
+        options: [
+            "He was cast out of the camp.",
+            "He was fined thirty shekels of silver.",
+            "He was stoned to death by the congregation.",
+            "He was required to offer a sin offering."
+        ],
+        answer: "He was stoned to death by the congregation.",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Numbers 15:35-36 (KJV) records the LORD's direct command and its fulfillment: 'And the LORD said unto Moses, The man shall be surely put to death: all the congregation shall stone him with stones without the camp. And all the congregation brought him without the camp, and stoned him with stones, and he died; as the LORD commanded Moses.'"
+    },
+    {
+        id: "BP127",
+        question: "In Daniel chapter 5, what were the three words written on the wall by the mysterious hand during Belshazzar's feast?",
+        options: [
+            "MENE, MENE, TEKEL, UPHARSIN",
+            "TALITHA, CUMI, EPHPHATHA",
+            "MARANATHA, HOSANNA, SHALOM",
+            "ELI, ELI, LAMA SABACHTHANI"
+        ],
+        answer: "MENE, MENE, TEKEL, UPHARSIN",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Daniel 5:25 (KJV) records the mysterious writing: 'And this is the writing that was written, MENE, MENE, TEKEL, UPHARSIN.' Daniel then interprets these words as a judgment against Belshazzar."
+    },
+    {
+        id: "BP128",
+        question: "Which minor prophet's entire book is a prophecy directed against the nation of Edom?",
+        options: [
+            "Nahum",
+            "Habakkuk",
+            "Obadiah",
+            "Zephaniah"
+        ],
+        answer: "Obadiah",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "The book of Obadiah, the shortest book in the Old Testament, consists of a single chapter prophesying the downfall of Edom for its pride and its violence against its brother Jacob."
+    },
+    {
+        id: "BP129",
+        question: "In the parable of the good Samaritan, what two individuals passed by the wounded man before the Samaritan helped him?",
+        options: [
+            "A Pharisee and a Sadducee",
+            "A soldier and a tax collector",
+            "A priest and a Levite",
+            "A scribe and an elder"
+        ],
+        answer: "A priest and a Levite",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "In Luke 10:31-32 (KJV), Jesus tells the story: 'And by chance there came down a certain priest that way: and when he saw him, he passed by on the other side. And likewise a Levite, when he was at the place, came and looked on him, and passed by on the other side.'"
+    },
+    {
+        id: "BP130",
+        question: "What did Elisha cast into the spring of waters at Jericho to heal them?",
+        options: [
+            "A handful of meal",
+            "A branch of a fig tree",
+            "Salt",
+            "A smooth stone from a brook"
+        ],
+        answer: "Salt",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "In 2 Kings 2:21 (KJV), Elisha performs this miracle: 'And he went forth unto the spring of the waters, and cast the salt in there, and said, Thus saith the LORD, I have healed these waters; there shall not be from thence any more death or barren land.'"
+    },
+    {
+        id: "BP131",
+        question: "Who was the prophet that rebuked King David for his sin with Bathsheba by telling him a parable about a rich man and a poor man with a little ewe lamb?",
+        options: [
+            "Elijah",
+            "Samuel",
+            "Isaiah",
+            "Nathan"
+        ],
+        answer: "Nathan",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "2 Samuel 12 (KJV) records the confrontation where the prophet Nathan uses this parable to convict David of his sin."
+    },
+    {
+        id: "BP132",
+        question: "What specific plague did God send upon the Philistines when they captured the Ark of the Covenant?",
+        options: [
+            "A plague of locusts",
+            "A plague of boils",
+            "A plague of emerods (tumors/hemorrhoids)",
+            "A plague of frogs"
+        ],
+        answer: "A plague of emerods (tumors/hemorrhoids)",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "1 Samuel 5:6 (KJV) states, 'But the hand of the LORD was heavy upon them of Ashdod, and he destroyed them, and smote them with emerods, even Ashdod and the coasts thereof.'"
+    },
+    {
+        id: "BP133",
+        question: "What was the name of the man whom Paul raised from the dead in Troas after he had fallen from a third-story window during Paul's long sermon?",
+        options: [
+            "Trophimus",
+            "Eutychus",
+            "Tychicus",
+            "Erastus"
+        ],
+        answer: "Eutychus",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "This event is recorded in Acts 20:9-10 (KJV): 'And there sat in a window a certain young man named Eutychus, being fallen into a deep sleep: and as Paul was long preaching, he sunk down with sleep, and fell down from the third loft, and was taken up dead.' Paul then embraced him and his life returned."
+    },
+    {
+        id: "BP134",
+        question: "What was the occupation of Simon, the man in whose house Peter was staying in Joppa when he had the vision of the sheet with unclean animals?",
+        options: [
+            "A fisherman",
+            "A tentmaker",
+            "A tanner",
+            "A carpenter"
+        ],
+        answer: "A tanner",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Acts 10:6 (KJV) provides this detail in the angel's instruction to Cornelius: 'He lodgeth with one Simon a tanner, whose house is by the sea side: he shall tell thee what thou oughtest to do.'"
+    },
+    {
+        id: "BP135",
+        question: "In Genesis, who is described as being a 'mighty hunter before the LORD'?",
+        options: [
+            "Esau",
+            "Ishmael",
+            "Nimrod",
+            "Lamech"
+        ],
+        answer: "Nimrod",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Genesis 10:9 (KJV) says of Nimrod, a descendant of Ham, 'He was a mighty hunter before the LORD: wherefore it is said, Even as Nimrod the mighty hunter before the LORD.'"
+    },
+    {
+        id: "BP136",
+        question: "In the book of Job, what did God point to as a creature He made which 'eateth grass as an ox' and has strength in its loins and force in the navel of its belly?",
+        options: [
+            "The leviathan",
+            "The behemoth",
+            "The unicorn",
+            "The dragon"
+        ],
+        answer: "The behemoth",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "In Job 40:15-16 (KJV), God challenges Job by describing a powerful creature: 'Behold now behemoth, which I made with thee; he eateth grass as an ox. Lo now, his strength is in his loins, and his force in the navel of his belly.'"
+    },
+    {
+        id: "BP137",
+        question: "What was the name of the apostle who is also called 'the Canaanite' in the gospels of Matthew and Mark?",
+        options: [
+            "Simon Peter",
+            "Judas Iscariot",
+            "Simon the Zealot",
+            "Thaddaeus"
+        ],
+        answer: "Simon the Zealot",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Matthew 10:4 and Mark 3:18 list the twelve apostles, and both refer to 'Simon the Canaanite.' The term is believed to be derived from an Aramaic word for 'zealot,' which is how Luke refers to him."
+    },
+    {
+        id: "BP138",
+        question: "What was the specific offering required under the Mosaic law for the cleansing of a leper?",
+        options: [
+            "A bullock and a ram",
+            "A turtledove and a young pigeon",
+            "Two lambs without blemish, flour, and oil",
+            "Two birds, cedar wood, scarlet, and hyssop"
+        ],
+        answer: "Two birds, cedar wood, scarlet, and hyssop",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Leviticus 14:4-7 (KJV) details the initial ceremony for cleansing a leper, which involved two living birds, cedar wood, scarlet yarn, and hyssop. This was a complex ritual distinct from other offerings."
+    },
+    {
+        id: "BP139",
+        question: "In Revelation, which of the seven churches is told, 'be watchful, and strengthen the things which remain, that are ready to die: for I have not found thy works perfect before God'?",
+        options: [
+            "Ephesus",
+            "Smyrna",
+            "Pergamos",
+            "Sardis"
+        ],
+        answer: "Sardis",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "This rebuke is given specifically to the church in Sardis in Revelation 3:2 (KJV), which had a reputation for being alive but was spiritually dead."
+    },
+    {
+        id: "BP140",
+        question: "Who was the king of Judah that was hidden in the temple for six years by his aunt Jehosheba to protect him from his wicked grandmother, Athaliah?",
+        options: [
+            "Uzziah",
+            "Joash",
+            "Josiah",
+            "Hezekiah"
+        ],
+        answer: "Joash",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "The story is told in 2 Kings 11 (KJV). After Athaliah usurped the throne and killed the royal heirs, the infant Joash was rescued and hidden until he was old enough to be proclaimed king."
+    },
+    {
+        id: "BP141",
+        question: "According to 1 Kings, how many times did Elijah stretch himself upon the dead son of the widow of Zarephath before the child's soul came into him again?",
+        options: [
+            "Once",
+            "Twice",
+            "Three times",
+            "Seven times"
+        ],
+        answer: "Three times",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "1 Kings 17:21 (KJV) describes the miracle with this specific detail: 'And he stretched himself upon the child three times, and cried unto the LORD, and said, O LORD my God, I pray thee, let this child's soul come into him again.'"
+    },
+    {
+        id: "BP142",
+        question: "Who is the only woman mentioned in Hebrews chapter 11's 'Hall of Faith'?",
+        options: [
+            "Sarah",
+            "Rahab",
+            "Esther",
+            "Deborah"
+        ],
+        answer: "Rahab",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "While Sarah is mentioned in connection with Abraham's faith, Rahab the harlot is listed as a standalone example of faith in Hebrews 11:31 (KJV): 'By faith the harlot Rahab perished not with them that believed not, when she had received the spies with peace.'"
+    },
+    {
+        id: "BP143",
+        question: "What was the name of the runaway slave on whose behalf Paul wrote a letter to his master?",
+        options: [
+            "Tychicus",
+            "Epaphras",
+            "Onesimus",
+            "Archippus"
+        ],
+        answer: "Onesimus",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "The entire book of Philemon is Paul's personal appeal to Philemon to receive back his runaway slave, Onesimus, not as a slave but as a beloved brother in Christ."
+    },
+    {
+        id: "BP144",
+        question: "What was the name of the city where the disciples were first called Christians?",
+        options: [
+            "Jerusalem",
+            "Rome",
+            "Corinth",
+            "Antioch"
+        ],
+        answer: "Antioch",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Acts 11:26 (KJV) provides this historical detail about the burgeoning Gentile church: 'And it came to pass, that a whole year they assembled themselves with the church, and taught much people. And the disciples were called Christians first in Antioch.'"
+    },
+    {
+        id: "BP145",
+        question: "Which of the twelve spies that Moses sent into Canaan gave a faithful report, along with Caleb?",
+        options: [
+            "Igal, the son of Joseph",
+            "Palti, the son of Raphu",
+            "Joshua, the son of Nun",
+            "Sethur, the son of Michael"
+        ],
+        answer: "Joshua, the son of Nun",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Numbers 13 and 14 describe the mission of the twelve spies. Only Joshua and Caleb encouraged the people to trust God and enter the land, while the other ten brought back an evil report."
+    },
+    {
+        id: "BP146",
+        question: "In the book of Acts, which couple was struck dead for lying to the Holy Ghost about the price of a piece of land they sold?",
+        options: [
+            "Aquila and Priscilla",
+            "Ananias and Sapphira",
+            "Andronicus and Junia",
+            "Philemon and Apphia"
+        ],
+        answer: "Ananias and Sapphira",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Acts 5:1-11 (KJV) recounts the sobering story of Ananias and his wife Sapphira, who conspired to lie about their donation to the church and were both struck dead for it."
+    },
+    {
+        id: "BP147",
+        question: "In the book of Genesis, who was sold into slavery by his brothers?",
+        options: [
+            "Jacob",
+            "Joseph",
+            "Benjamin",
+            "Reuben"
+        ],
+        answer: "Joseph",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Genesis 37 tells the story of Joseph's brothers, who out of jealousy first plotted to kill him, but then decided to sell him to a company of Ishmeelites for twenty pieces of silver."
+    },
+    {
+        id: "BP148",
+        question: "Which prophet was commanded by God to marry a prostitute as a symbolic representation of Israel's unfaithfulness?",
+        options: [
+            "Jeremiah",
+            "Ezekiel",
+            "Hosea",
+            "Amos"
+        ],
+        answer: "Hosea",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "The book of Hosea begins with this command from God in chapter 1, verse 2 (KJV): 'And the LORD said to Hosea, Go, take unto thee a wife of whoredoms and children of whoredoms: for the land hath committed great whoredom, departing from the LORD.'"
+    },
+    {
+        id: "BP149",
+        question: "What did Jesus say are the two greatest commandments?",
+        options: [
+            "To honor your father and mother, and not to steal.",
+            "To love God with all your heart, soul, and mind, and to love your neighbor as yourself.",
+            "To keep the Sabbath, and pay tithe",
+            "To be baptized, and preach the gospel"
+        ],
+        answer: "To love God with all your heart, soul, and mind, and to love your neighbor as yourself.",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "In Matthew 22:37-40 (KJV), Jesus answers a lawyer's question by summarizing the entire law with these two great commandments."
+    },
+    {
+        id: "BP150",
+        question: "Which disciple denied Jesus three times before the cock crew?",
+        options: [
+            "Judas",
+            "John",
+            "Peter",
+            "Thomas"
+        ],
+        answer: "Peter",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "As predicted by Jesus, the apostle Peter, despite his bold claims of loyalty, denied knowing Jesus three times during the night of Jesus's trial, an event recorded in all four gospels."
+    },
+    {
+        id: "BP151",
+        question: "In his first epistle, what does the apostle John say is the ultimate test of knowing God?",
+        options: [
+            "Speaking in tongues",
+            "Keeping his commandments",
+            "Having a feeling of peace",
+            "Performing mighty works"
+        ],
+        answer: "Keeping his commandments",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "1 John 2:3-4 (KJV) states, 'And hereby we do know that we know him, if we keep his commandments. He that saith, I know him, and keepeth not his commandments, is a liar, and the truth is not in him.'"
+    },
+    {
+        id: "BP152",
+        question: "In Paul's description of the armor of God in Ephesians 6, what is the 'sword of the Spirit'?",
+        options: [
+            "The shield of faith",
+            "The helmet of salvation",
+            "The word of God",
+            "The breastplate of righteousness"
+        ],
+        answer: "The word of God",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Ephesians 6:17 (KJV) identifies the only offensive weapon in the spiritual armor: 'And take the helmet of salvation, and the sword of the Spirit, which is the word of God.'"
+    },
+    {
+        id: "BP153",
+        question: "Who appeared with Jesus in glory on the Mount of Transfiguration?",
+        options: [
+            "Abraham and Isaac",
+            "David and Solomon",
+            "Moses and Elias (Elijah)",
+            "Enoch and Noah"
+        ],
+        answer: "Moses and Elias (Elijah)",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Matthew 17:3 (KJV) records the event: 'And, behold, there appeared unto them Moses and Elias talking with him.' These two represented the Law and the Prophets."
+    },
+    {
+        id: "BP154",
+        question: "Which of the seven deacons chosen in Acts 6 was also known as an evangelist who preached in Samaria and to the Ethiopian eunuch?",
+        options: [
+            "Stephen",
+            "Philip",
+            "Prochorus",
+            "Nicolas"
+        ],
+        answer: "Philip",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Acts 8 details the ministry of Philip the deacon, who after the persecution following Stephen's death, became a powerful evangelist, taking the gospel to Samaria and beyond."
+    },
+    {
+        id: "BP155",
+        question: "In the book of Daniel, what were the names of Daniel's three friends who were cast into the fiery furnace?",
+        options: [
+            "Meshach, Shadrach, and Abed-nego",
+            "Hananiah, Mishael, and Azariah",
+            "Belteshazzar, Arioch, and Ashpenaz",
+            "Both A and B are correct."
+        ],
+        answer: "Both A and B are correct.",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Daniel 1:7 (KJV) explains that the prince of the eunuchs gave them new, Babylonian names. Hananiah was named Shadrach, Mishael was named Meshach, and Azariah was named Abed-nego. Both sets of names refer to the same three individuals."
+    },
+    {
+        id: "BP156",
+        question: "What was the first plague God sent upon Egypt through Moses and Aaron?",
+        options: [
+            "The plague of frogs",
+            "The plague of lice",
+            "The river turning to blood",
+            "The plague of darkness"
+        ],
+        answer: "The river turning to blood",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "The first of the ten plagues is recorded in Exodus 7:20-21 (KJV), where Aaron strikes the Nile with his rod and all the water in Egypt turns to blood."
+    },
+    {
+        id: "BP157",
+        question: "What did Jacob name the place where he wrestled with an angel until the breaking of the day?",
+        options: [
+            "Bethel",
+            "Mahanaim",
+            "Peniel",
+            "Mizpeh"
+        ],
+        answer: "Peniel",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Genesis 32:30 (KJV) states, 'And Jacob called the name of the place Peniel: for I have seen God face to face, and my life is preserved.'"
+    },
+    {
+        id: "BP158",
+        question: "In the book of Revelation, how many elders are described as sitting on thrones around the throne of God?",
+        options: [
+            "Twelve",
+            "Twenty-four",
+            "Seventy",
+            "One hundred and forty-four"
+        ],
+        answer: "Twenty-four",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "Revelation 4:4 (KJV) describes the heavenly throne room: 'And round about the throne were four and twenty seats: and upon the seats I saw four and twenty elders sitting, clothed in white raiment; and they had on their heads crowns of gold.'"
+    },
+    {
+        id: "BP159",
+        question: "What was the name of the crippled man, lame from his mother's womb, who was healed by Peter and John at the gate of the temple called Beautiful?",
+        options: [
+            "His name is not given.",
+            "Bartimaeus",
+            "Malchus",
+            "Lazarus"
+        ],
+        answer: "His name is not given.",
+        category: "Bible People",
+        difficulty: "medium",
+        explanation: "The story in Acts 3:1-10 (KJV) describes the man and his healing in detail but never mentions his personal name."
     }
+// ... existing code ...
 ];

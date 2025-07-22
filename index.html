@@ -92,6 +92,11 @@
                 <option value="100">100</option>
             </select>
         </div>
+        <div id="time-attack-container" style="margin-bottom: 1.2rem; text-align: center; display: flex; justify-content: center; align-items: center; gap: 0.5rem;">
+            <label for="time-attack-checkbox" style="font-family: 'Bangers', cursive; font-size: 1.1rem; color: #ff4b5c;">Time Attack Mode:</label>
+            <input type="checkbox" id="time-attack-checkbox" style="width: 20px; height: 20px; cursor: pointer;">
+        </div>
+
         <div class="buttons">
             <button id="solo" class="comic-button" aria-label="Start solo player mode">Solo Player</button>
             <button id="teams" class="comic-button" aria-label="Start two teams mode">Two Teams</button>
@@ -119,6 +124,7 @@
             <p>Streak: 0</p>
             <p>1 / 100</p>
         </div>
+        <h3 id="team-turn-indicator" style="text-align:center; font-family:'Bangers', cursive; color:#ffd700; display:none;"></h3>
         <div class="score-teams" id="score-teams" style="display:none;">
             <div>
                 <p>Blue: 0</p>
@@ -146,6 +152,7 @@
             <p>Your Score: 0</p>
             <p>Correct Answers: 0/100</p>
             <p>Longest Streak: 0</p>
+            <p id="results-solo-time" style="display: none;"></p>
             <div class="stars">★ ★ ★ ★ ★</div>
             <p id="achievement-title">Achievement Unlocked: Novice Guardian!</p>
         </div>
@@ -153,6 +160,7 @@
             <p>Blue: 0</p>
             <p>Black: 0</p>
             <p id="team-winner">Blue Team Wins!</p>
+            <p id="results-teams-time" style="display: none;"></p>
         </div>
         <!-- Leaderboard section -->
         <div id="leaderboard-filter" style="text-align:center; margin-bottom:0.5em; display:none;">
@@ -173,6 +181,14 @@
             <button id="download" class="comic-button">Download Answers</button>
         </div>
     </div>
+    <!-- Team Intermission Screen -->
+    <div id="intermission-screen" style="display: none;">
+      <h2>Team Turn Over!</h2>
+      <p>Blue Team's Final Score: <span id="intermission-score">0</span></p>
+      <h3>Get Ready, Black Team!</h3>
+      <button id="start-next-turn-btn" class="comic-button">Start Your Turn</button>
+    </div>
+
     <div id="top-right-controls">
         <button id="exit" class="comic-button" style="display:none;">Exit Game</button>
         <button id="mute-toggle" class="comic-button" aria-label="Mute or unmute sound" style="display: none;">🔊</button>

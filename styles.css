@@ -1621,3 +1621,17 @@ select:focus {
     outline: 3px solid #ffd700;
     outline-offset: 2px;
 }
+
+/* --- Time Attack Mode Styles --- */
+.timer.global-timer p {
+    font-size: 2.8rem; /* Make the global timer bigger */
+    color: #ff4b5c;   /* Make it stand out */
+    text-shadow: 0 0 12px #fff;
+    animation: timerPulse 1s infinite alternate;
+}
+
+@media (max-width: 500px) {
+    .timer.global-timer p {
+        font-size: 2.2rem;
+    }
+}

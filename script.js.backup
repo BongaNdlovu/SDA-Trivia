@@ -34,26 +34,25 @@ const exitBtn = document.getElementById('exit');
 const feedbackOverlay = document.querySelector('.feedback-overlay');
 const achievementTitle = document.getElementById('achievement-title');
 const teamWinner = document.getElementById('team-winner');
-const teamTurnIndicator = document.getElementById('team-turn-indicator'); // <-- ADD THIS
 const hintBtn = document.getElementById('hint-btn');
 const takeawayBtn = document.getElementById('takeaway-btn');
 // Removed revive button reference
 const explanationDiv = document.createElement('div');
-explanationDiv.id = 'explanation';
-explanationDiv.style.display = 'none';
-explanationDiv.style.margin = '1.2rem auto 0 auto';
-explanationDiv.style.maxWidth = '90%';
-explanationDiv.style.background = 'rgba(255,255,255,0.18)';
-explanationDiv.style.border = '2.5px solid #ffd700';
-explanationDiv.style.borderRadius = '14px';
-explanationDiv.style.fontFamily = 'Bangers, cursive';
-explanationDiv.style.fontSize = '1.25rem';
-explanationDiv.style.color = '#222';
-explanationDiv.style.textAlign = 'center';
-explanationDiv.style.padding = '1rem 1.2rem';
-explanationDiv.style.boxShadow = '0 2px 12px #ffd70022';
+    explanationDiv.id = 'explanation';
+    explanationDiv.style.display = 'none';
+    explanationDiv.style.margin = '1.2rem auto 0 auto';
+    explanationDiv.style.maxWidth = '90%';
+    explanationDiv.style.background = 'rgba(255,255,255,0.18)';
+    explanationDiv.style.border = '2.5px solid #ffd700';
+    explanationDiv.style.borderRadius = '14px';
+    explanationDiv.style.fontFamily = 'Bangers, cursive';
+    explanationDiv.style.fontSize = '1.25rem';
+    explanationDiv.style.color = '#222';
+    explanationDiv.style.textAlign = 'center';
+    explanationDiv.style.padding = '1rem 1.2rem';
+    explanationDiv.style.boxShadow = '0 2px 12px #ffd70022';
 // Insert after optionsDiv in the DOM
-optionsDiv.parentNode.appendChild(explanationDiv);
+        optionsDiv.parentNode.appendChild(explanationDiv);
 
 // --- Sound Integration ---
 const audioCorrect1 = document.getElementById('audio-correct-1');
@@ -75,8 +74,8 @@ let userInteracted = false;
  */
 function playSound(audio) {
     if (!isMuted && audio) {
-        try {
-            audio.currentTime = 0;
+    try {
+        audio.currentTime = 0;
             audio.play().catch(e => console.warn('Error playing sound:', e));
         } catch (e) {
             console.warn('Error playing sound:', e);
@@ -108,13 +107,13 @@ function startTicking() {
         audioTickingTime.play().catch(e => {
             console.warn('Error starting ticking sound:', e);
             // Fallback to interval method if loop doesn't work
-            tickingInterval = setInterval(() => {
+                tickingInterval = setInterval(() => {
                 if (!isMuted) {
                     audioTickingTime.currentTime = 0;
                     audioTickingTime.play().catch(() => {});
-                }
-            }, 1000);
-        });
+                    }
+                }, 1000);
+            });
     } catch (e) {
         console.warn('Error playing ticking sound:', e);
     }
@@ -126,17 +125,17 @@ function stopTicking() {
         tickingInterval = null;
     }
     
-    try {
+        try {
         audioTickingTime.pause();
         audioTickingTime.currentTime = 0;
-    } catch (e) {
-        console.warn('Error stopping ticking sound:', e);
+        } catch (e) {
+            console.warn('Error stopping ticking sound:', e);
+        }
     }
-}
 // Mute/unmute logic with better error handling
 muteToggle.addEventListener('click', () => {
-    isMuted = !isMuted;
-    
+            isMuted = !isMuted;
+            
     // Create an array of all audio elements
     const allAudioElements = [
         audioCorrect1, audioCorrect2, audioWrong, audioTimeup,
@@ -152,19 +151,19 @@ muteToggle.addEventListener('click', () => {
     
     // Update mute button UI
     muteToggle.innerText = isMuted ? '🔇' : '🔊';
-    
-    // Handle background music
-    if (isMuted) {
-        pauseBgMusic();
+            
+            // Handle background music
+            if (isMuted) {
+                pauseBgMusic();
     } else {
-        playBgMusic();
-    }
-});
+                playBgMusic();
+        }
+    });
 // Show mute button after first user interaction with improved implementation
 function ensureUserInteraction() {
     if (!userInteracted) {
         userInteracted = true;
-        muteToggle.style.display = 'block';
+            muteToggle.style.display = 'block';
         
         // Pre-load audio files after user interaction
         const allAudioElements = [
@@ -220,17 +219,6 @@ let longestStreak = 0;
 let correctAnswers = 0;
 let timer;
 let timeLeft = 15;
-
-// --- NEW FOR TIME ATTACK MODE ---
-let isTimeAttackMode = false;
-let globalTimer;
-const TOTAL_TIME_LIMIT = 180; // 3 minutes
-let globalTimeLeft = TOTAL_TIME_LIMIT;
-let timeAttackStartTime = null;
-let timeRanOut = false;
-// --- NEW FOR SEQUENTIAL TEAM TIME ATTACK ---
-let timeAttackTeamTurn = 'blue';
-let timeAttackBlueTeamFinalScore = 0;
 // --- New for achievements ---
 let answerTimes = [];
 let questionStartTime = null;
@@ -242,50 +230,21 @@ let hadComebackStreak = false;
 let gameStartTime = null;
 let gameElapsedTime = 0;
 let gameQuestionCount = 0;
-// --- NEW FOR UNIQUE QUESTIONS ---
-let blueTeamQuestions = [];
 
 // --- Utility Functions ---
 function shuffle(array) {
     let currentIndex = array.length, randomIndex;
-    while (currentIndex !== 0) {
+        while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
+            currentIndex--;
         [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
     }
     return array;
 }
 
-// --- NEW: Get Time Attack Questions ---
-function getAttackModeQuestions(filteredByCategory, questionsToExclude = [], lenient = false) {
-    const excludeIds = new Set(questionsToExclude.map(q => q.id));
-    const easyQuestions = shuffle(filteredByCategory.filter(q => q.difficulty === 'easy' && !excludeIds.has(q.id)));
-    const hardQuestions = shuffle(filteredByCategory.filter(q => q.difficulty === 'hard' && !excludeIds.has(q.id)));
-
-    if (!lenient && (easyQuestions.length < 5 || hardQuestions.length < 25)) {
-        alert('Not enough unique questions for the second team! Please select "All Categories".');
-        return null;
-    }
-
-    const numEasy = lenient ? Math.min(easyQuestions.length, 5) : 5;
-    const numHard = lenient ? Math.min(hardQuestions.length, 25) : 25;
-    const finalQuestions = easyQuestions.slice(0, numEasy).concat(hardQuestions.slice(0, numHard));
-
-    if (finalQuestions.length < 1) {
-        alert('Too few unique questions available for a full game. Please try "All Categories" or add more questions.');
-        return null;
-    }
-
-    if (lenient && (numEasy < 5 || numHard < 25)) {
-        alert(`Limited unique questions available. Starting a shorter game with ${finalQuestions.length} questions for balance.`);
-    }
-
-    return shuffle(finalQuestions);
-}
-
 function clearOptions() {
-    while (optionsDiv.firstChild) {
-        optionsDiv.removeChild(optionsDiv.firstChild);
+        while (optionsDiv.firstChild) {
+            optionsDiv.removeChild(optionsDiv.firstChild);
     }
 }
 
@@ -383,9 +342,9 @@ function triggerConfetti(type = 'normal') {
         confettiSettings.colors = [[230, 57, 70], [183, 28, 28], [255, 215, 0]];
         confettiSettings.clock = 30;
     }
-    confetti.clear();
-    confetti.render();
-    setTimeout(() => { confetti.clear(); }, 3000);
+        confetti.clear();
+        confetti.render();
+        setTimeout(() => { confetti.clear(); }, 3000);
 }
 
 function animateScoreChange(element, up) {
@@ -446,8 +405,8 @@ const freezeTimeBtn = document.getElementById('freeze-time-btn');
 
 function updateFaithTokens(animate = false) {
     faithTokensDiv.innerText = `Faith Tokens: ${faithTokens}`;
-    doublePointsBtn.disabled = faithTokens < 1 || doublePointsActive;
-    freezeTimeBtn.disabled = faithTokens < 1 || freezeTimeActive;
+        doublePointsBtn.disabled = faithTokens < 1 || doublePointsActive;
+        freezeTimeBtn.disabled = faithTokens < 1 || freezeTimeActive;
     // Removed revive button disabled state
     
     // Animate faith tokens change if requested
@@ -459,55 +418,52 @@ function updateFaithTokens(animate = false) {
     }
 }
 
-doublePointsBtn.onclick = function() {
-    if (faithTokens < 1 || doublePointsActive) return;
-    faithTokens--;
-    doublePointsActive = true;
-    updateFaithTokens(true);
+    doublePointsBtn.onclick = function() {
+        if (faithTokens < 1 || doublePointsActive) return;
+        faithTokens--;
+        doublePointsActive = true;
+        updateFaithTokens(true);
     doublePointsBtn.classList.add('hint-highlight');
-    setTimeout(() => doublePointsBtn.classList.remove('hint-highlight'), 1200);
-};
+        setTimeout(() => doublePointsBtn.classList.remove('hint-highlight'), 1200);
+    };
 
-freezeTimeBtn.onclick = function() {
-    if (faithTokens < 1 || freezeTimeActive) return;
-    faithTokens--;
-    powerUpsUsed++;
-    freezeTimeActive = true;
-    updateFaithTokens(true);
+    freezeTimeBtn.onclick = function() {
+        if (faithTokens < 1 || freezeTimeActive) return;
+        faithTokens--;
+        freezeTimeActive = true;
+        updateFaithTokens(true);
+    clearInterval(timer);
     freezeTimeBtn.classList.add('hint-highlight');
-    timerDiv.style.color = '#2196f3';
-    timerDiv.style.textShadow = '0 0 10px #2196f3';
-
-    const timerToPause = isTimeAttackMode ? globalTimer : timer;
-    clearInterval(timerToPause);
-    
-    setTimeout(() => {
-        freezeTimeBtn.classList.remove('hint-highlight');
-        timerDiv.style.color = '';
-        timerDiv.style.textShadow = '';
         
-        if (isTimeAttackMode) {
-            startGlobalTimer(); // Resume global timer
-        } else {
+        // Add visual feedback for frozen time
+            timerDiv.style.color = '#2196f3';
+            timerDiv.style.textShadow = '0 0 10px #2196f3';
+        
+        setTimeout(() => {
+        freezeTimeBtn.classList.remove('hint-highlight');
+            
+            // Restore timer appearance
+                timerDiv.style.color = '';
+                timerDiv.style.textShadow = '';
+            
             startTimer();
-        }
-        freezeTimeActive = false;
-        updateFaithTokens();
-    }, 5000);
-};
+            freezeTimeActive = false;
+            updateFaithTokens();
+        }, 5000);
+    };
 
 // Removed revive button onclick function
 
 // --- Wager Logic ---
 const wagerInput = document.getElementById('wager-input');
 const wagerFeedback = document.createElement('div');
-wagerFeedback.id = 'wager-feedback';
-wagerFeedback.style.fontSize = '0.8rem';
-wagerFeedback.style.marginTop = '0.25rem';
-wagerFeedback.style.fontStyle = 'italic';
-wagerFeedback.style.color = '#ffd700';
-wagerFeedback.style.textAlign = 'center';
-wagerInput.parentNode.appendChild(wagerFeedback);
+    wagerFeedback.id = 'wager-feedback';
+    wagerFeedback.style.fontSize = '0.8rem';
+    wagerFeedback.style.marginTop = '0.25rem';
+    wagerFeedback.style.fontStyle = 'italic';
+    wagerFeedback.style.color = '#ffd700';
+    wagerFeedback.style.textAlign = 'center';
+        wagerInput.parentNode.appendChild(wagerFeedback);
 
 let currentWager = 5;
 let maxWagerValue = 20;
@@ -543,42 +499,42 @@ function updateWagerFeedback() {
  * Validates and updates the wager input value
  * Ensures the wager is within valid range and provides visual feedback
  */
-wagerInput.addEventListener('input', () => {
-    // Remove non-numeric characters
-    wagerInput.value = wagerInput.value.replace(/[^0-9]/g, '');
-    
-    // Parse and validate the value
-    let val = parseInt(wagerInput.value, 10);
-    
-    // Handle empty or invalid input
-    if (wagerInput.value === '' || isNaN(val)) {
-        val = 1;
-        wagerInput.value = '1';
-    }
-    
-    // Enforce min/max constraints
-    if (val < 1) {
-        val = 1;
-        wagerInput.value = '1';
-    }
-    
-    if (val > maxWagerValue) {
-        val = maxWagerValue;
-        wagerInput.value = maxWagerValue.toString();
-    }
-    
-    currentWager = val;
-    updateWagerFeedback();
-});
-
-// Add a blur event to ensure valid value when focus leaves the input
-wagerInput.addEventListener('blur', () => {
-    if (wagerInput.value === '' || isNaN(parseInt(wagerInput.value, 10))) {
-        wagerInput.value = '1';
-        currentWager = 1;
+    wagerInput.addEventListener('input', () => {
+        // Remove non-numeric characters
+        wagerInput.value = wagerInput.value.replace(/[^0-9]/g, '');
+        
+        // Parse and validate the value
+        let val = parseInt(wagerInput.value, 10);
+        
+        // Handle empty or invalid input
+        if (wagerInput.value === '' || isNaN(val)) {
+            val = 1;
+            wagerInput.value = '1';
+        }
+        
+        // Enforce min/max constraints
+        if (val < 1) {
+            val = 1;
+            wagerInput.value = '1';
+        }
+        
+        if (val > maxWagerValue) {
+            val = maxWagerValue;
+            wagerInput.value = maxWagerValue.toString();
+        }
+        
+        currentWager = val;
         updateWagerFeedback();
-    }
-});
+    });
+
+    // Add a blur event to ensure valid value when focus leaves the input
+    wagerInput.addEventListener('blur', () => {
+        if (wagerInput.value === '' || isNaN(parseInt(wagerInput.value, 10))) {
+            wagerInput.value = '1';
+            currentWager = 1;
+            updateWagerFeedback();
+        }
+    });
 
 // --- Game Logic Modifications ---
 let roundSize = 20;
@@ -883,146 +839,58 @@ document.addEventListener('DOMContentLoaded', () => {
         faithTokens = 0;
         doublePointsActive = false;
         freezeTimeActive = false;
-        timeRanOut = false; // Reset time out flag
-        // --- NEW FOR SEQUENTIAL TEAM TIME ATTACK ---
-        timeAttackTeamTurn = 'blue'; // Always start with blue team
-        timeAttackBlueTeamFinalScore = 0;
-        blueTeamQuestions = []; // Reset blue team questions
-
-        // --- NEW: CHECK FOR TIME ATTACK MODE ---
-        isTimeAttackMode = document.getElementById('time-attack-checkbox').checked;
-
-        // Filter questions by category first
-        const selectedCategory = categoryDropdown.value;
-        let availableQuestions;
-        if (selectedCategory === 'All') {
-            availableQuestions = [...gameQuestions];
-        } else {
-            availableQuestions = gameQuestions.filter(q => q.category === selectedCategory);
+        // Removed revive-related variable resets
+        // Get selected game length
+        let numQuestions = 20;
+        const gameLengthSelect = document.getElementById('game-length-select');
+        if (gameLengthSelect && !isNaN(parseInt(gameLengthSelect.value, 10))) {
+            numQuestions = parseInt(gameLengthSelect.value, 10);
         }
-
-        if (isTimeAttackMode) {
-            questions = getAttackModeQuestions(availableQuestions, [], false);
-            if (questions === null) return; // Stop if not enough questions
-            // SAVE BLUE TEAM'S QUESTIONS FOR EXCLUSION LATER
-            if (gameMode === 'teams') {
-                blueTeamQuestions = [...questions]; // Save a copy of blue team's questions
-                console.log('Blue team questions saved:', blueTeamQuestions.map(q => q.id));
-            }
-            gameQuestionCount = questions.length;
-            maxWagerValue = 20; // Higher stakes
-            currentWager = 10;
-        } else {
-            let numQuestions = 20;
-            const gameLengthSelect = document.getElementById('game-length-select');
-            if (gameLengthSelect && !isNaN(parseInt(gameLengthSelect.value, 10))) {
-                numQuestions = parseInt(gameLengthSelect.value, 10);
-            }
-            questions = shuffle(availableQuestions).slice(0, numQuestions);
-            gameQuestionCount = numQuestions;
-            maxWagerValue = 20;
-            currentWager = 5;
-        }
-
-        if (questions.length === 0) {
-            alert('No questions found for this category!');
-            return;
-        }
-        
+        // --- New: Track question count and start time ---
+        gameQuestionCount = numQuestions;
         gameStartTime = Date.now();
+        // Initialize wager system
+        maxWagerValue = mode === 'solo' ? 20 : 20;
+        currentWager = 5;
         wagerInput.value = currentWager;
         updateWagerFeedback();
         updateFaithTokens();
-
+        // Filter questions by category
+        const selectedCategory = categoryDropdown.value;
+        let filteredQuestions;
+        if (selectedCategory === 'All') {
+            filteredQuestions = [...gameQuestions];
+        } else {
+            filteredQuestions = gameQuestions.filter(q => q.category === selectedCategory);
+        }
+        // Always shuffle all questions before slicing
+        filteredQuestions = shuffle(filteredQuestions);
+        if (filteredQuestions.length === 0) {
+            alert('No questions found for this category!');
+            slideIn(container);
+            slideOut(gameDiv);
+            return;
+        }
+        questions = filteredQuestions.slice(0, numQuestions); // use selected length
         slideOut(container, () => slideIn(gameDiv));
         gameDiv.classList.add('active');
         gameOverDiv.style.display = 'none';
         nextBtn.style.display = 'none';
-
         if (gameMode === 'solo') {
             scoreSolo.style.display = 'block';
             scoreTeams.style.display = 'none';
             updateSoloStats();
+            doublePointsBtn.style.display = 'none';
+            freezeTimeBtn.style.display = 'none';
         } else {
             scoreSolo.style.display = 'none';
             scoreTeams.style.display = 'block';
-            updateScoreDisplay(); // Use the new function
+            updateScore();
+            doublePointsBtn.style.display = '';
+            freezeTimeBtn.style.display = '';
         }
-
-        // START THE CORRECT TIMER
-        if (isTimeAttackMode) {
-            startGlobalTimer();
-        }
-        
         showQuestion();
         exitBtn.style.display = 'block';
-        exitBtn.onclick = () => {
-            // Optional confirmation for mid-game exits
-            if (gameDiv.style.display !== 'none' && currentQuestionIndex > 0 && !confirm('Are you sure you want to exit? Progress will be lost.')) {
-                return;
-            }
-
-            // Clean up all timers and audio
-            clearInterval(timer);
-            stopTicking();
-            if (isTimeAttackMode) {
-                stopGlobalTimer();
-            }
-
-            // Reset all game state and UI
-            resetState();
-
-            // Hide overlays if present
-            const loadingOverlay = document.getElementById('loading-overlay');
-            if (loadingOverlay) loadingOverlay.style.display = 'none';
-            if (feedbackOverlay) feedbackOverlay.style.display = 'none';
-
-            // Determine current screen and slide out appropriately
-            const currentScreen = gameOverDiv.style.display !== 'none' ? gameOverDiv : gameDiv;
-            slideOut(currentScreen, () => {
-                slideIn(container);
-            });
-
-            // Hide both game screens and remove active classes
-            gameDiv.style.display = 'none';
-            gameOverDiv.style.display = 'none';
-            gameDiv.classList.remove('active');
-            gameOverDiv.classList.remove('active');
-
-            // Hide exit button
-            exitBtn.style.display = 'none';
-
-            // Stop music
-            pauseBgMusic();
-
-            // Reset game state to prevent memory leaks
-            questions = [];
-            currentQuestionIndex = 0;
-            playerScore = 0;
-            currentStreak = 0;
-            longestStreak = 0;
-            correctAnswers = 0;
-            teamBlueScore = 0;
-            teamBlackScore = 0;
-            faithTokens = 0;
-            powerUpsUsed = 0;
-            wrongStreak = 0;
-            hadComebackStreak = false;
-            answerTimes = [];
-            gameStartTime = null;
-            gameElapsedTime = 0;
-            gameQuestionCount = 0;
-            doublePointsActive = false;
-            freezeTimeActive = false;
-            timeRanOut = false;
-            timeAttackTeamTurn = 'blue';
-            timeAttackBlueTeamFinalScore = 0;
-            blueTeamQuestions = [];
-
-            // Hide encouragement message if present
-            const encouragementDiv = document.getElementById('encouragement-message');
-            if (encouragementDiv) encouragementDiv.innerText = '';
-        };
         // Show a new fun fact on the start screen when returning
         const funFactBox = document.getElementById('fun-fact-box');
         if (funFactBox) {
@@ -1033,10 +901,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Show Question ---
     window.showQuestion = function() {
         resetState();
+        // Reset hint/takeaway buttons
         hintBtn.disabled = false;
         takeawayBtn.disabled = false;
         doublePointsActive = false;
         freezeTimeActive = false;
+        // Removed revive-related reset
         updateFaithTokens();
         // Remove hint/removed classes from previous question
         Array.from(optionsDiv.children).forEach(btn => {
@@ -1084,13 +954,7 @@ document.addEventListener('DOMContentLoaded', () => {
         wagerInput.style.background = isLightningRound ? '#ffd700' : '';
         // Question
         if (gameMode === 'teams') {
-            if (isTimeAttackMode) {
-                // In Time Attack, the turn is fixed for the whole round
-                currentTeam = timeAttackTeamTurn; 
-            } else {
-                // In normal mode, teams alternate questions
-                currentTeam = (currentQuestionIndex % 2 === 0) ? 'blue' : 'black';
-            }
+            currentTeam = (currentQuestionIndex % 2 === 0) ? 'blue' : 'black';
         }
         if (!questions[currentQuestionIndex]) {
             showEndScreen();
@@ -1104,11 +968,8 @@ document.addEventListener('DOMContentLoaded', () => {
         optionsDiv.innerHTML = '';
         optionsDiv.appendChild(createOptionButtons(shuffledOptions, selectAnswer));
         if (gameMode === 'solo') updateSoloStats();
-        else updateScoreDisplay();
-        // START PER-QUESTION TIMER ONLY IF NOT IN TIME ATTACK
-        if (!isTimeAttackMode) {
-            startTimer();
-        }
+        else updateScore();
+        startTimer();
         explanationDiv.style.display = 'none';
         explanationDiv.innerText = '';
         // Set prophecy mode if needed
@@ -1155,188 +1016,195 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Select Answer ---
     window.selectAnswer = function(e) {
-        if (!isTimeAttackMode) {
-            stopTicking();
-            clearInterval(timer);
+        stopTicking();
+        clearInterval(timer);
+        // --- New: Record answer time ---
+        if (questionStartTime) {
+          const elapsed = (Date.now() - questionStartTime) / 1000;
+          answerTimes.push(elapsed);
+          questionStartTime = null;
         }
-
         const selectedBtn = e.target;
         const correct = selectedBtn.innerText === questions[currentQuestionIndex].answer;
         showFeedback(correct);
         
+        // Get and validate wager
         let wager = parseInt(wagerInput.value, 10) || 1;
+        if (wager > maxWagerValue) wager = maxWagerValue;
+        if (wager < 1) wager = 1;
+        
+        // High-Stakes Day: Friday (double wager)
         const isFriday = (new Date().getDay() === 5);
         if (isFriday) wager *= 2;
-
+        
+        // Visual feedback for wager
+        wagerInput.classList.remove('wager-success', 'wager-failure');
+        if (correct) {
+            wagerInput.classList.add('wager-success');
+            wagerFeedback.textContent = `Great bet! +${wager} points`;
+            wagerFeedback.style.color = '#4caf50'; // Green
+        } else {
+            wagerInput.classList.add('wager-failure');
+            wagerFeedback.textContent = `Risky bet! -${wager} points`;
+            wagerFeedback.style.color = '#f44336'; // Red
+        }
         if (correct) {
             playCorrectSound();
-            let points = wager * (doublePointsActive ? 2 : 1);
+            // Trigger streak confetti/fireworks
+            if (correct && currentStreak > 0 && currentStreak % 3 === 0) {
+                triggerConfetti('streak');
+                triggerComicFireworks(true);
+            }
+            // Double points power-up
+            let points = wager;
+            if (doublePointsActive) points *= 2;
+            if (isLightningRound) points *= 2;
             if (gameMode === 'solo') {
                 playerScore += points;
                 currentStreak++;
                 correctAnswers++;
                 if (currentStreak > longestStreak) longestStreak = currentStreak;
+                // Faith token for 3+ streak
                 if (currentStreak > 0 && currentStreak % 3 === 0) {
                     faithTokens++;
-                    updateFaithTokens(true);
+                    updateFaithTokens(true); // Animate token change
                 }
-            } else { // Teams
-                if (currentTeam === 'blue') teamBlueScore += points;
-                else teamBlackScore += points;
+                updateSoloStats();
+            } else {
+                if (currentTeam === 'blue') {
+                    teamBlueScore += points;
+                    if (teamBlueScore < 0) teamBlueScore = 0;
+                } else {
+                    teamBlackScore += points;
+                    if (teamBlackScore < 0) teamBlackScore = 0;
+                }
+                // Faith token for 3+ streak
+                if (currentStreak > 0 && currentStreak % 3 === 0) {
+                    faithTokens++;
+                    updateFaithTokens(true); // Animate token change
+                }
+                updateScore();
             }
-            selectedBtn.classList.add('correct');
+            selectedBtn.classList.add('correct', 'pop');
+            doublePointsActive = false;
+            // Remove pop after animation
+            setTimeout(() => selectedBtn.classList.remove('pop'), 600);
         } else {
             playSound(audioWrong);
             shakeElement(selectedBtn);
+            triggerComicAlarm();
+            // Deduct wager
+            let points = wager;
+            if (isLightningRound) points *= 2;
             if (gameMode === 'solo') {
-                playerScore = Math.max(0, playerScore - wager);
+                playerScore = Math.max(0, playerScore - points);
                 currentStreak = 0;
-            } else { // Teams
-                if (currentTeam === 'blue') teamBlueScore = Math.max(0, teamBlueScore - wager);
-                else teamBlackScore = Math.max(0, teamBlackScore - wager);
+                updateSoloStats();
+            } else {
+                if (currentTeam === 'blue') {
+                    teamBlueScore = Math.max(0, teamBlueScore - points);
+                } else {
+                    teamBlackScore = Math.max(0, teamBlackScore - points);
+                }
                 currentStreak = 0;
+                updateScore();
             }
-            selectedBtn.classList.add('incorrect');
+            selectedBtn.classList.add('incorrect', 'red-flash', 'shake');
+            // Remove red-flash and shake after animation
+            setTimeout(() => {
+                selectedBtn.classList.remove('red-flash', 'shake');
+            }, 600);
+            // Removed revive-related code
+            updateFaithTokens();
         }
-        
-        if (gameMode === 'solo') updateSoloStats();
-        else updateScoreDisplay();
-
-        doublePointsActive = false;
-
+        // Highlight the correct answer and disable all buttons
         Array.from(optionsDiv.children).forEach(btn => {
-            if (btn.innerText === questions[currentQuestionIndex].answer) btn.classList.add('correct', 'highlight-correct');
+            if (btn.innerText === questions[currentQuestionIndex].answer) {
+                btn.classList.add('correct');
+                // Add a more visible highlight for the correct answer when a wrong answer is selected
+                if (!correct) {
+                    btn.classList.add('highlight-correct');
+                }
+            }
+            btn.classList.add('disabled');
             btn.disabled = true;
         });
-
-        const currentQ = questions[currentQuestionIndex];
-        if (currentQ.explanation) {
-            explanationDiv.innerText = '💡 ' + currentQ.explanation;
-            explanationDiv.style.display = 'block';
-        }
-
-        if (isTimeAttackMode) {
-            setTimeout(handleEndOfQuestion, 1500);
-        } else {
-            nextBtn.style.display = 'block';
-        }
-
+        nextBtn.style.display = 'block';
+        // Disable hint/takeaway and wager after answer
         hintBtn.disabled = true;
         takeawayBtn.disabled = true;
         wagerInput.disabled = true;
+        updateFaithTokens();
+        // Animate score changes
+        if (gameMode === 'solo') {
+            const scoreEl = scoreSolo.children[0];
+            animateScoreChange(scoreEl, correct);
+        } else {
+            const blueEl = scoreTeams.querySelector('div').children[0];
+            const blackEl = scoreTeams.querySelector('div').children[2];
+            if (currentTeam === 'blue') animateScoreChange(blueEl, correct);
+            else animateScoreChange(blackEl, correct);
+        }
+        // Trigger streak confetti/fireworks
+        if (correct && currentStreak > 0 && (currentStreak === 3 || currentStreak === 5 || currentStreak === 7 || currentStreak === 10 || currentStreak === 15)) {
+            playStreakSound(currentStreak);
+        }
+        // If perfect score
+        if (gameMode === 'solo' && correctAnswers === questions.length) {
+            triggerConfetti('perfect');
+            triggerComicFireworks(true);
+        }
+        // If team win
+        if (gameMode === 'teams') {
+            if (teamBlueScore > teamBlackScore || teamBlackScore > teamBlueScore) {
+                triggerConfetti('teamwin');
+                triggerComicFireworks(true);
+            }
+        }
+        // Progress bar pulse/glow as time runs low
+        const progressBar = document.getElementById('progress-bar');
+        if (timeLeft <= 5) {
+            progressBar.classList.add('progress-pulse');
+        } else {
+            progressBar.classList.remove('progress-pulse');
+        }
+        const currentQ = questions[currentQuestionIndex];
+        if (currentQ.explanation) {
+            // Hide first to trigger animation when shown
+            explanationDiv.style.display = 'none';
+            explanationDiv.innerText = '💡 ' + currentQ.explanation;
+            
+            // Slight delay for better visual flow
+            setTimeout(() => {
+                explanationDiv.style.display = 'block';
+            }, 300);
+        }
+        // Show encouragement message
+        let encouragementDiv = document.getElementById('encouragement-message');
+        if (!encouragementDiv) {
+            encouragementDiv = document.createElement('div');
+            encouragementDiv.id = 'encouragement-message';
+            encouragementDiv.style.margin = '1.1rem auto 0 auto';
+            encouragementDiv.style.textAlign = 'center';
+            encouragementDiv.style.fontFamily = "'Bangers', cursive";
+            encouragementDiv.style.fontSize = '1.15rem';
+            encouragementDiv.style.color = '#2196f3';
+            encouragementDiv.style.minHeight = '1.5em';
+            optionsDiv.parentNode.appendChild(encouragementDiv);
+        }
+        encouragementDiv.innerText = getRandomEncouragement(correct);
     };
-
-    // --- Smarter Team Score Display ---
-    function updateScoreDisplay() {
-        const blueScoreEl = scoreTeams.querySelector('div').children[0];
-        const questionCountEl = scoreTeams.querySelector('div').children[1];
-        const blackScoreEl = scoreTeams.querySelector('div').children[2];
-        const questionsTotal = questions.length;
-        questionCountEl.innerText = `${currentQuestionIndex + 1} / ${questionsTotal}`;
-        teamTurnIndicator.style.display = 'block'; // Make it visible
-        if (isTimeAttackMode && gameMode === 'teams') {
-            if (timeAttackTeamTurn === 'black') {
-                teamTurnIndicator.innerText = "Black Team's Turn!";
-                blueScoreEl.innerText = `Blue's Final: ${timeAttackBlueTeamFinalScore}`;
-                blackScoreEl.innerText = `Black: ${teamBlackScore}`;
-            } else {
-                teamTurnIndicator.innerText = "Blue Team's Turn!";
-                blueScoreEl.innerText = `Blue: ${teamBlueScore}`;
-                blackScoreEl.innerText = `Black: ${teamBlackScore}`;
-            }
-        } else {
-            teamTurnIndicator.style.display = 'none'; // Not needed for alternating questions
-            blueScoreEl.innerText = `Blue: ${teamBlueScore}`;
-            blackScoreEl.innerText = `Black: ${teamBlackScore}`;
-        }
-    }
-
-    // --- End of Question Logic ---
-    function handleEndOfQuestion() {
-        currentQuestionIndex++;
-        
-        if (currentQuestionIndex < questions.length) {
-            showQuestion();
-        } else {
-            // The round is over
-            stopGlobalTimer();
-            if (gameMode === 'teams' && timeAttackTeamTurn === 'blue') {
-                // Blue team finished, so save their score and show the intermission screen
-                timeAttackBlueTeamFinalScore = teamBlueScore;
-                document.getElementById('intermission-score').innerText = timeAttackBlueTeamFinalScore;
-                slideOut(gameDiv, () => {
-                    slideIn(document.getElementById('intermission-screen'));
-                    // Re-attach event listener every time intermission is shown
-                    const startNextTurnBtn = document.getElementById('start-next-turn-btn');
-                    if (startNextTurnBtn) {
-                        startNextTurnBtn.onclick = startNextTeamTurn;
-                    }
-                });
-            } else {
-                // It's a solo game or the Black team just finished, so go to the final results
-                showEndScreen();
-            }
-        }
-    }
-
-    // --- Start the next team turn (Black Team) ---
-    function startNextTeamTurn() {
-        console.log('startNextTeamTurn called');
-        console.log('Blue team questions available for exclusion:', blueTeamQuestions.length);
-        
-        // Prepare the game for the Black team
-        timeAttackTeamTurn = 'black';
-        currentQuestionIndex = 0;
-        correctAnswers = 0;
-        currentStreak = 0;
-        // Don't reset teamBlackScore, let it accumulate from 0
-
-        // Get a fresh set of questions for the Black team
-        const selectedCategory = categoryDropdown.value;
-        console.log('Selected category:', selectedCategory);
-        
-        let availableQuestions = (selectedCategory === 'All') 
-            ? [...gameQuestions] 
-            : gameQuestions.filter(q => q.category === selectedCategory);
-        
-        console.log('Available questions before exclusion:', availableQuestions.length);
-        console.log('Questions to exclude (blue team):', blueTeamQuestions.map(q => q.id));
-        
-        // Exclude Blue Team's questions, lenient mode
-        questions = getAttackModeQuestions(availableQuestions, blueTeamQuestions, true);
-        
-        if (!questions) {
-            console.error('Could not start Black Team\'s turn due to lack of questions.');
-            alert("Could not start Black Team's turn due to lack of questions.");
-            slideOut(document.getElementById('intermission-screen'), () => slideIn(container));
-            return;
-        }
-        
-        console.log('Black team questions loaded:', questions.length, 'questions');
-        console.log('Black team question IDs:', questions.map(q => q.id));
-        
-        // Transition back to the game screen and start the new round
-        slideOut(document.getElementById('intermission-screen'), () => {
-            console.log('Transitioning to game screen for black team');
-            slideIn(gameDiv);
-            updateScoreDisplay(); // Update display for the new turn
-            startGlobalTimer();
-            showQuestion();
-        });
-    }
 
     function handleTimeUp() {
         showFeedback(false);
+        // Add container shake animation
         gameDiv.classList.add('container-shake');
         setTimeout(() => gameDiv.classList.remove('container-shake'), 500);
-        
         Array.from(optionsDiv.children).forEach(btn => {
             if (btn.innerText === questions[currentQuestionIndex].answer) btn.classList.add('correct');
-            btn.disabled = true;
+            btn.classList.add('disabled');
         });
-
         nextBtn.style.display = 'block';
-
         if (gameMode === 'solo') {
             currentStreak = 0;
             updateSoloStats();
@@ -1377,49 +1245,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
-    // --- NEW: Global Timer Functions for Time Attack ---
-    function startGlobalTimer() {
-        globalTimeLeft = TOTAL_TIME_LIMIT;
-        timerDiv.innerText = `Time: ${formatTime(globalTimeLeft)}`;
-        timerDiv.parentElement.classList.add('global-timer');
-
-        globalTimer = setInterval(() => {
-            globalTimeLeft--;
-            timerDiv.innerText = `Time: ${formatTime(globalTimeLeft)}`;
-            if (globalTimeLeft <= 0) {
-                handleGlobalTimeUp();
-            }
-        }, 1000);
-    }
-
-    function stopGlobalTimer() {
-        clearInterval(globalTimer);
-        timerDiv.parentElement.classList.remove('global-timer');
-    }
-
-    function handleGlobalTimeUp() {
-        stopGlobalTimer();
-        playSound(audioTimeup);
-        timeRanOut = true;
-
-        if (gameMode === 'teams' && timeAttackTeamTurn === 'blue') {
-            // Blue team's time ran out, save score and go to intermission
-            timeAttackBlueTeamFinalScore = teamBlueScore;
-            document.getElementById('intermission-score').innerText = timeAttackBlueTeamFinalScore;
-            slideOut(gameDiv, () => {
-                slideIn(document.getElementById('intermission-screen'));
-                // Re-attach event listener every time intermission is shown
-                const startNextTurnBtn = document.getElementById('start-next-turn-btn');
-                if (startNextTurnBtn) {
-                    startNextTurnBtn.onclick = startNextTeamTurn;
-                }
-            });
-        } else {
-            // Solo game time ran out OR Black team's time ran out, so go to final results
-            showEndScreen();
-        }
-    }
-
     // --- End Screen Functions ---
     // Enhanced celebration effects
     function triggerEnhancedCelebration(type = 'default') {
@@ -1455,180 +1280,125 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Enhanced end game function with better mobile experience
     function showEndScreen() {
-        stopGlobalTimer(); // Ensure global timer is stopped
         slideOut(gameDiv, () => slideIn(gameOverDiv));
         gameOverDiv.classList.add('active');
         exitBtn.style.display = 'block';
-
-        // Hide all result sections initially to prevent overlap
-        resultsSolo.style.display = 'none';
-        resultsTeams.style.display = 'none';
-        document.getElementById('results-solo-time').style.display = 'none';
-        document.getElementById('results-teams-time').style.display = 'none';
-
-        if (isTimeAttackMode) {
-            gameElapsedTime = timeRanOut ? TOTAL_TIME_LIMIT : (Date.now() - gameStartTime) / 1000;
-            const timeTakenStr = `Time Taken: ${formatTime(Math.round(gameElapsedTime))}`;
-
-            if (gameMode === 'solo') {
-                resultsSolo.style.display = 'block';
+        
+        if (gameMode === 'solo') {
+            resultsSolo.style.display = 'block';
+            resultsTeams.style.display = 'none';
+            
+            // Calculate performance metrics
+            const avgTime = answerTimes.length ? (answerTimes.reduce((a, b) => a + b, 0) / answerTimes.length) : 0;
+            const correctPct = Math.round((correctAnswers / questions.length) * 100);
+            
+            const stats = {
+                completed: true,
+                correctAnswers,
+                totalQuestions: questions.length,
+                correctPct,
+                longestStreak,
+                avgTime,
+                powerUpsUsed,
+                faithTokens,
+                comeback: hadComebackStreak,
+            };
+            
+            // Enhanced celebration based on performance
+            if (correctPct >= 95) {
+                triggerEnhancedCelebration('perfect');
+            } else if (correctPct >= 80) {
+                triggerEnhancedCelebration('excellent');
+            } else if (correctPct >= 60) {
+                triggerEnhancedCelebration('good');
+            }
+            
+            // Update results with enhanced animations
+            setTimeout(() => {
                 resultsSolo.children[0].innerText = `Your Score: ${playerScore}`;
-                const attempted = timeRanOut ? currentQuestionIndex + 1 : 30;
-                resultsSolo.children[1].innerText = `Correct Answers: ${correctAnswers}/${attempted}`;
+                resultsSolo.children[0].classList.add('score-animate-up');
+            }, 200);
+            
+            setTimeout(() => {
+                resultsSolo.children[1].innerText = `Correct Answers: ${correctAnswers}/${questions.length}`;
+                resultsSolo.children[1].classList.add('fade-in');
+            }, 400);
+            
+            setTimeout(() => {
                 resultsSolo.children[2].innerText = `Longest Streak: ${longestStreak}`;
-                const timeEl = document.getElementById('results-solo-time');
-                timeEl.innerText = timeTakenStr;
-                timeEl.style.display = 'block';
-                resultsSolo.querySelector('.stars').style.display = 'none';
-                achievementTitle.style.display = 'none';
-            } else { // Teams Time Attack
-                resultsSolo.style.display = 'none';
-                resultsTeams.style.display = 'block';
-                
-                // USE THE SAVED BLUE SCORE FOR THE FINAL DISPLAY
-                resultsTeams.children[0].innerText = `Blue: ${timeAttackBlueTeamFinalScore} pts`;
-                resultsTeams.children[1].innerText = `Black: ${teamBlackScore} pts`;
-                
-                // Determine winner by comparing the final scores
-                let winnerText = '';
-                if (timeAttackBlueTeamFinalScore > teamBlackScore) {
-                    winnerText = '🏆 Blue Team Triumphs!';
-                } else if (teamBlackScore > timeAttackBlueTeamFinalScore) {
-                    winnerText = '🏆 Black Team Dominates!';
-                } else {
-                    winnerText = "🤝 It's a Tie!";
-                }
-                teamWinner.innerText = winnerText;
-                
-                // You can hide the time element here as it's not the primary win condition
-                document.getElementById('results-teams-time').style.display = 'none';
+                resultsSolo.children[2].classList.add('fade-in');
+            }, 600);
+            
+            // Calculate and display stars with animation
+            const stars = calculateStars(stats);
+            let starStr = '';
+            for (let i = 0; i < stars; i++) starStr += '★';
+            for (let i = stars; i < 5; i++) starStr += '☆';
+            
+            setTimeout(() => {
+                resultsSolo.querySelector('.stars').innerText = starStr;
+                resultsSolo.querySelector('.stars').classList.add('score-animate-up');
+            }, 800);
+            
+            // Enhanced achievement display
+            const unlocked = ACHIEVEMENTS.filter(a => a.check(stats));
+            if (unlocked.length > 0) {
+                setTimeout(() => {
+                    achievementTitle.innerText = `🏆 Achievement Unlocked: ${unlocked[0].name}!`;
+                    achievementTitle.classList.add('fade-in');
+                }, 1000);
             }
-
+            
+            // Enhanced leaderboard functionality
+            handleLeaderboard();
+            
         } else {
-            // ... all of your existing showEndScreen logic for normal mode goes here
-            // (Make sure to wrap it in this else block)
-            // --- Existing showEndScreen logic below ---
-            // (Copy/paste or keep your original code here)
-            slideOut(gameDiv, () => slideIn(gameOverDiv));
-            gameOverDiv.classList.add('active');
-            exitBtn.style.display = 'block';
+            // Enhanced team mode end screen
+            resultsSolo.style.display = 'none';
+            resultsTeams.style.display = 'block';
             
-            if (gameMode === 'solo') {
-                resultsSolo.style.display = 'block';
-                resultsTeams.style.display = 'none';
-                
-                // Calculate performance metrics
-                const avgTime = answerTimes.length ? (answerTimes.reduce((a, b) => a + b, 0) / answerTimes.length) : 0;
-                const correctPct = Math.round((correctAnswers / questions.length) * 100);
-                
-                const stats = {
-                    completed: true,
-                    correctAnswers,
-                    totalQuestions: questions.length,
-                    correctPct,
-                    longestStreak,
-                    avgTime,
-                    powerUpsUsed,
-                    faithTokens,
-                    comeback: hadComebackStreak,
-                };
-                
-                // Enhanced celebration based on performance
-                if (correctPct >= 95) {
-                    triggerEnhancedCelebration('perfect');
-                } else if (correctPct >= 80) {
-                    triggerEnhancedCelebration('excellent');
-                } else if (correctPct >= 60) {
-                    triggerEnhancedCelebration('good');
-                }
-                
-                // Update results with enhanced animations
-                setTimeout(() => {
-                    resultsSolo.children[0].innerText = `Your Score: ${playerScore}`;
-                    resultsSolo.children[0].classList.add('score-animate-up');
-                }, 200);
-                
-                setTimeout(() => {
-                    resultsSolo.children[1].innerText = `Correct Answers: ${correctAnswers}/${questions.length}`;
-                    resultsSolo.children[1].classList.add('fade-in');
-                }, 400);
-                
-                setTimeout(() => {
-                    resultsSolo.children[2].innerText = `Longest Streak: ${longestStreak}`;
-                    resultsSolo.children[2].classList.add('fade-in');
-                }, 600);
-                
-                // Calculate and display stars with animation
-                const stars = calculateStars(stats);
-                let starStr = '';
-                for (let i = 0; i < stars; i++) starStr += '★';
-                for (let i = stars; i < 5; i++) starStr += '☆';
-                
-                setTimeout(() => {
-                    resultsSolo.querySelector('.stars').innerText = starStr;
-                    resultsSolo.querySelector('.stars').classList.add('score-animate-up');
-                }, 800);
-                
-                // Enhanced achievement display
-                const unlocked = ACHIEVEMENTS.filter(a => a.check(stats));
-                if (unlocked.length > 0) {
-                    setTimeout(() => {
-                        achievementTitle.innerText = `🏆 Achievement Unlocked: ${unlocked[0].name}!`;
-                        achievementTitle.classList.add('fade-in');
-                    }, 1000);
-                }
-                
-                // Enhanced leaderboard functionality
-                handleLeaderboard();
-                
+            // Determine winner with enhanced celebration
+            let winnerText = '';
+            let celebrationType = 'good';
+            
+            if (teamBlueScore > teamBlackScore) {
+                winnerText = '�� Blue Team Triumphs!';
+                celebrationType = 'excellent';
+            } else if (teamBlackScore > teamBlueScore) {
+                winnerText = '⚫ Black Team Dominates!';
+                celebrationType = 'excellent';
             } else {
-                // Enhanced team mode end screen
-                resultsSolo.style.display = 'none';
-                resultsTeams.style.display = 'block';
-                
-                // Determine winner with enhanced celebration
-                let winnerText = '';
-                let celebrationType = 'good';
-                
-                if (teamBlueScore > teamBlackScore) {
-                    winnerText = ' Blue Team Triumphs!';
-                    celebrationType = 'excellent';
-                } else if (teamBlackScore > teamBlueScore) {
-                    winnerText = '⚫ Black Team Dominates!';
-                    celebrationType = 'excellent';
-                } else {
-                    winnerText = '🤝 Epic Tie - Rematch Needed!';
-                    celebrationType = 'good';
-                }
-                
-                // Animate team results
-                setTimeout(() => {
-                    resultsTeams.children[0].innerText = `Blue: ${teamBlueScore}`;
-                    resultsTeams.children[0].classList.add(teamBlueScore > teamBlackScore ? 'score-animate-up' : 'fade-in');
-                }, 200);
-                
-                setTimeout(() => {
-                    resultsTeams.children[1].innerText = `Black: ${teamBlackScore}`;
-                    resultsTeams.children[1].classList.add(teamBlackScore > teamBlueScore ? 'score-animate-up' : 'fade-in');
-                }, 400);
-                
-                setTimeout(() => {
-                    teamWinner.innerText = winnerText;
-                    teamWinner.classList.add('fade-in');
-                    triggerEnhancedCelebration(celebrationType);
-                }, 600);
+                winnerText = '🤝 Epic Tie - Rematch Needed!';
+                celebrationType = 'good';
             }
             
-            playBgMusic();
+            // Animate team results
+            setTimeout(() => {
+                resultsTeams.children[0].innerText = `Blue: ${teamBlueScore}`;
+                resultsTeams.children[0].classList.add(teamBlueScore > teamBlackScore ? 'score-animate-up' : 'fade-in');
+            }, 200);
             
-            // Show random fun fact with animation
-            const funFactBoxEnd = document.getElementById('fun-fact-box-end');
-            if (funFactBoxEnd) {
-                setTimeout(() => {
-                    funFactBoxEnd.innerText = getRandomFunFact();
-                    funFactBoxEnd.classList.add('fade-in');
-                }, 1200);
-            }
+            setTimeout(() => {
+                resultsTeams.children[1].innerText = `Black: ${teamBlackScore}`;
+                resultsTeams.children[1].classList.add(teamBlackScore > teamBlueScore ? 'score-animate-up' : 'fade-in');
+            }, 400);
+            
+            setTimeout(() => {
+                teamWinner.innerText = winnerText;
+                teamWinner.classList.add('fade-in');
+                triggerEnhancedCelebration(celebrationType);
+            }, 600);
+        }
+        
+        playBgMusic();
+        
+        // Show random fun fact with animation
+        const funFactBoxEnd = document.getElementById('fun-fact-box-end');
+        if (funFactBoxEnd) {
+            setTimeout(() => {
+                funFactBoxEnd.innerText = getRandomFunFact();
+                funFactBoxEnd.classList.add('fade-in');
+            }, 1200);
         }
     }
 
@@ -1707,7 +1477,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let icon = '';
             if (idx === 0) icon = '🥇';
             else if (idx === 1) icon = '🥈';
-            else if (idx === 2) icon = '';
+            else if (idx === 2) icon = '��';
             else icon = `${idx + 1}.`;
             
             // Check if current player
@@ -1754,6 +1524,154 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Enhanced answer selection with better animations
+    window.selectAnswer = function(e) {
+        stopTicking();
+        clearInterval(timer);
+        
+        // Record answer time
+        if (questionStartTime) {
+            const elapsed = (Date.now() - questionStartTime) / 1000;
+            answerTimes.push(elapsed);
+            questionStartTime = null;
+        }
+        
+        const selectedBtn = e.target;
+        const correct = selectedBtn.innerText === questions[currentQuestionIndex].answer;
+        
+        // Enhanced visual feedback
+        if (correct) {
+            selectedBtn.classList.add('correct');
+            selectedBtn.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                selectedBtn.style.transform = '';
+            }, 300);
+        } else {
+            selectedBtn.classList.add('incorrect');
+            // Show correct answer
+            Array.from(optionsDiv.children).forEach(btn => {
+                if (btn.innerText === questions[currentQuestionIndex].answer) {
+                    btn.classList.add('correct');
+                }
+            });
+        }
+        
+        // Disable all buttons with animation
+        Array.from(optionsDiv.children).forEach((btn, index) => {
+            setTimeout(() => {
+                btn.disabled = true;
+                btn.style.opacity = btn === selectedBtn || btn.classList.contains('correct') ? '1' : '0.6';
+            }, index * 50);
+        });
+        
+        showFeedback(correct);
+        
+        // Continue with existing logic...
+        let wager = parseInt(wagerInput.value, 10) || 1;
+        if (wager > maxWagerValue) wager = maxWagerValue;
+        if (wager < 1) wager = 1;
+        
+        const isFriday = (new Date().getDay() === 5);
+        if (isFriday) wager *= 2;
+        
+        // Enhanced scoring logic with animations
+        if (correct) {
+            playCorrectSound();
+            let points = wager;
+            if (doublePointsActive) points *= 2;
+            if (isLightningRound) points *= 2;
+            
+            if (gameMode === 'solo') {
+                playerScore += points;
+                currentStreak++;
+                correctAnswers++;
+                if (currentStreak > longestStreak) longestStreak = currentStreak;
+                
+                // Enhanced faith token animation
+                if (currentStreak > 0 && currentStreak % 3 === 0) {
+                    faithTokens++;
+                    updateFaithTokens(true);
+                    
+                    // Show streak celebration
+                    const streakMsg = document.createElement('div');
+                    streakMsg.innerHTML = `🔥 ${currentStreak} Streak! +1 Faith Token`;
+                    streakMsg.style.cssText = `
+                        position: fixed;
+                        top: 20%;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        background: rgba(255,215,0,0.9);
+                        color: #222;
+                        padding: 1rem 2rem;
+                        border-radius: 20px;
+                        font-family: 'Bangers', cursive;
+                        font-size: 1.5rem;
+                        z-index: 1000;
+                        animation: fadeInOut 2s ease-out forwards;
+                    `;
+                    document.body.appendChild(streakMsg);
+                    setTimeout(() => streakMsg.remove(), 2000);
+                }
+                
+                updateSoloStats();
+            } else {
+                // Team mode scoring with enhanced feedback
+                if (currentTeam === 'blue') {
+                    teamBlueScore += points;
+                    if (teamBlueScore < 0) teamBlueScore = 0;
+                } else {
+                    teamBlackScore += points;
+                    if (teamBlackScore < 0) teamBlackScore = 0;
+                }
+                updateScore();
+            }
+            
+            doublePointsActive = false;
+        } else {
+            // Wrong answer handling with enhanced feedback
+            playSound(audioWrong);
+            let points = wager;
+            if (isLightningRound) points *= 2;
+            
+            if (gameMode === 'solo') {
+                playerScore = Math.max(0, playerScore - points);
+                currentStreak = 0;
+                updateSoloStats();
+            } else {
+                if (currentTeam === 'blue') {
+                    teamBlueScore = Math.max(0, teamBlueScore - points);
+                } else {
+                    teamBlackScore = Math.max(0, teamBlackScore - points);
+                }
+                updateScore();
+            }
+        }
+        
+        // Show explanation with enhanced animation
+        const currentQ = questions[currentQuestionIndex];
+        if (currentQ.explanation) {
+            explanationDiv.style.display = 'none';
+            explanationDiv.innerHTML = `💡 <strong>Explanation:</strong> ${currentQ.explanation}`;
+            
+            setTimeout(() => {
+                explanationDiv.style.display = 'block';
+                explanationDiv.classList.add('fade-in');
+            }, 500);
+        }
+        
+        // Show next button with delay
+        setTimeout(() => {
+            nextBtn.style.display = 'block';
+            nextBtn.classList.add('fade-in');
+        }, 800);
+        
+        // Disable game tools
+        hintBtn.disabled = true;
+        takeawayBtn.disabled = true;
+        wagerInput.disabled = true;
+        updateFaithTokens();
+    };
+
     // Initialize mobile enhancements
     enhanceMobileTouch();
     
@@ -1787,7 +1705,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 teamBlackScore = Math.max(0, teamBlackScore - 3);
             }
-            updateScoreDisplay();
+            updateScore();
         }
         
         // Highlight correct option with improved animation
@@ -1829,7 +1747,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 teamBlackScore = Math.max(0, teamBlackScore - 2);
             }
-            updateScoreDisplay();
+            updateScore();
         }
         
         // Remove two incorrect options with staggered animation for better visual effect
@@ -1869,42 +1787,34 @@ document.addEventListener('DOMContentLoaded', () => {
     freezeTimeBtn.onclick = function() {
         if (faithTokens < 1 || freezeTimeActive) return;
         faithTokens--;
-        powerUpsUsed++;
         freezeTimeActive = true;
         updateFaithTokens(true);
+        clearInterval(timer);
         freezeTimeBtn.classList.add('hint-highlight');
+        
+        // Add visual feedback for frozen time
         timerDiv.style.color = '#2196f3';
         timerDiv.style.textShadow = '0 0 10px #2196f3';
-
-        const timerToPause = isTimeAttackMode ? globalTimer : timer;
-        clearInterval(timerToPause);
         
         setTimeout(() => {
             freezeTimeBtn.classList.remove('hint-highlight');
+            
+            // Restore timer appearance
             timerDiv.style.color = '';
             timerDiv.style.textShadow = '';
             
-            if (isTimeAttackMode) {
-                startGlobalTimer(); // Resume global timer
-            } else {
-                startTimer();
-            }
+            startTimer();
             freezeTimeActive = false;
             updateFaithTokens();
         }, 5000);
+        powerUpsUsed++;
     };
 
     // Removed revive button onclick function
 
     // Attach event listeners for game start
-    soloBtn.onclick = () => {
-        exitBtn.style.display = 'block';
-        startGame('solo');
-    };
-    teamsBtn.onclick = () => {
-        exitBtn.style.display = 'block';
-        startGame('teams');
-    };
+    soloBtn.onclick = () => startGame('solo');
+    teamsBtn.onclick = () => startGame('teams');
     nextBtn.onclick = () => {
         // Hide explanation first if it's visible
         if (explanationDiv.style.display === 'block') {
@@ -1934,13 +1844,26 @@ document.addEventListener('DOMContentLoaded', () => {
         else startGame('teams');
     };
     downloadBtn.onclick = downloadAnswers;
-    const startNextTurnBtn = document.getElementById('start-next-turn-btn');
-    if(startNextTurnBtn) {
-        console.log('Attaching event listener to Start Your Turn button');
-        startNextTurnBtn.onclick = startNextTeamTurn;
-    } else {
-        console.warn('Start Your Turn button not found in DOM');
-    }
+    exitBtn.onclick = () => {
+        // Clean up all timers and audio
+        clearInterval(timer);
+        stopTicking();
+        
+        // Update UI
+        slideIn(container);
+        slideOut(gameDiv);
+        gameOverDiv.style.display = 'none';
+        exitBtn.style.display = 'none';
+        gameDiv.classList.remove('active');
+        gameOverDiv.classList.remove('active');
+        
+        // Stop music
+        pauseBgMusic();
+        
+        // Reset game state to prevent memory leaks
+        questions = [];
+        currentQuestionIndex = 0;
+    };
 });
 
 // --- High Contrast Mode Toggle ---
