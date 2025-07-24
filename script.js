@@ -142,7 +142,8 @@ muteToggle.addEventListener('click', () => {
         audioCorrect1, audioCorrect2, audioWrong, audioTimeup,
         audioRiser, audioBg, audioTimerTick, audioTickingTime,
         audioStreakWowza, audioStreakZing, audioStreakKawabanga,
-        audioStreakLetsGo, audioStreakNice
+        audioStreakLetsGo, audioStreakNice,
+        audioTransition, audioTransition2
     ];
     
     // Set muted state for all audio elements
@@ -171,7 +172,8 @@ function ensureUserInteraction() {
             audioCorrect1, audioCorrect2, audioWrong, audioTimeup,
             audioRiser, audioBg, audioTimerTick, audioTickingTime,
             audioStreakWowza, audioStreakZing, audioStreakKawabanga,
-            audioStreakLetsGo, audioStreakNice
+            audioStreakLetsGo, audioStreakNice,
+            audioTransition, audioTransition2
         ];
         
         // Touch all audio elements to prepare them
@@ -207,7 +209,7 @@ const confettiSettings = { target: 'confetti-canvas', respawn: false, clock: 30,
 const confetti = new ConfettiGenerator(confettiSettings);
 
 // --- Timer and Game State Variables ---
-let TIME_LIMIT = 15; // was const, now let for dynamic rounds
+let TIME_LIMIT = 20; // was 15, now 20 for all modes
 let questions = [];
 let currentQuestionIndex = 0;
 let gameMode = 'solo'; // 'solo' or 'teams'
@@ -222,7 +224,7 @@ let timer;
 let timeLeft = 15;
 
 // --- NEW FOR TIME ATTACK MODE ---
-let isTimeAttackMode = false;
+let isTimeAttackMode = false; // Always false to disable time attack mode
 let globalTimer;
 const TOTAL_TIME_LIMIT = 180; // 3 minutes
 let globalTimeLeft = TOTAL_TIME_LIMIT;
@@ -259,28 +261,13 @@ function shuffle(array) {
 // --- NEW: Get Time Attack Questions ---
 function getAttackModeQuestions(filteredByCategory, questionsToExclude = [], lenient = false) {
     const excludeIds = new Set(questionsToExclude.map(q => q.id));
-    const easyQuestions = shuffle(filteredByCategory.filter(q => q.difficulty === 'easy' && !excludeIds.has(q.id)));
-    const hardQuestions = shuffle(filteredByCategory.filter(q => q.difficulty === 'hard' && !excludeIds.has(q.id)));
-
-    if (!lenient && (easyQuestions.length < 5 || hardQuestions.length < 25)) {
-        alert('Not enough unique questions for the second team! Please select "All Categories".');
-        return null;
-    }
-
-    const numEasy = lenient ? Math.min(easyQuestions.length, 5) : 5;
-    const numHard = lenient ? Math.min(hardQuestions.length, 25) : 25;
-    const finalQuestions = easyQuestions.slice(0, numEasy).concat(hardQuestions.slice(0, numHard));
-
-    if (finalQuestions.length < 1) {
+    // Instead of filtering by difficulty, just use all available questions not excluded
+    const allQuestions = shuffle(filteredByCategory.filter(q => !excludeIds.has(q.id)));
+    if (allQuestions.length < 1) {
         alert('Too few unique questions available for a full game. Please try "All Categories" or add more questions.');
         return null;
     }
-
-    if (lenient && (numEasy < 5 || numHard < 25)) {
-        alert(`Limited unique questions available. Starting a shorter game with ${finalQuestions.length} questions for balance.`);
-    }
-
-    return shuffle(finalQuestions);
+    return allQuestions;
 }
 
 function clearOptions() {
@@ -316,18 +303,22 @@ function resetState() {
 
 // --- Animation Functions ---
 const RIGHT_OVERLAYS = [
-    { text: 'POW!', color: '#ffd700', fontSize: '3.5rem', rotate: -8 },
+    { text: 'KAPOW!', color: '#ffd700', fontSize: '3.7rem', rotate: -8 },
     { text: 'ZING!', color: '#4caf50', fontSize: '3.2rem', rotate: 6 },
-    { text: 'BAM!', color: '#ff4b5c', fontSize: '3.7rem', rotate: 12 },
+    { text: 'BOOM!', color: '#ff4b5c', fontSize: '3.9rem', rotate: 12 },
     { text: 'YES!', color: '#2196f3', fontSize: '3.3rem', rotate: -14 },
-    { text: 'NICE!', color: '#ff9800', fontSize: '3.4rem', rotate: 8 }
+    { text: 'NAILED IT!', color: '#ff9800', fontSize: '3.4rem', rotate: 8 },
+    { text: 'BULLSEYE!', color: '#00e6ff', fontSize: '3.5rem', rotate: -10 },
+    { text: 'WHAM!', color: '#ff1744', fontSize: '3.6rem', rotate: 10 }
 ];
 const WRONG_OVERLAYS = [
     { text: 'ZAP!', color: '#ff4b5c', fontSize: '3.5rem', rotate: 10 },
     { text: 'OOPS!', color: '#b71c1c', fontSize: '3.2rem', rotate: -10 },
     { text: 'MISS!', color: '#222', fontSize: '3.6rem', rotate: 7 },
     { text: 'NOPE!', color: '#607d8b', fontSize: '3.3rem', rotate: -12 },
-    { text: 'WHOOPS!', color: '#9e9e9e', fontSize: '3.1rem', rotate: 15 }
+    { text: 'WHOOPS!', color: '#9e9e9e', fontSize: '3.1rem', rotate: 15 },
+    { text: 'BUSTED!', color: '#ff1744', fontSize: '3.4rem', rotate: -7 },
+    { text: 'TRY AGAIN!', color: '#00e6ff', fontSize: '3.2rem', rotate: 11 }
 ];
 
 function showFeedback(isCorrect) {
@@ -633,6 +624,8 @@ const audioStreakZing = document.getElementById('audio-streak-zing');
 const audioStreakKawabanga = document.getElementById('audio-streak-kawabanga');
 const audioStreakLetsGo = document.getElementById('audio-streak-letsgo');
 const audioStreakNice = document.getElementById('audio-streak-nice');
+const audioTransition = document.getElementById('audio-transition');
+const audioTransition2 = document.getElementById('audio-transition2');
 
 /**
  * Plays a special sound effect based on the player's streak level
@@ -684,28 +677,28 @@ function getRandomFunFact() {
 
 // Encouragement messages
 const ENCOURAGEMENTS_CORRECT = [
-    "Great job! Keep it up!",
-    "You're on a roll!",
-    "Awesome!",
-    "Correct! Well done!",
-    "You nailed it!",
-    "Fantastic!",
-    "Impressive!",
-    "That's the spirit!",
-    "You got it right!",
-    "Keep going!"
+    "You're unstoppable!",
+    "Comic book legend!",
+    "That was heroic!",
+    "You crushed it!",
+    "Superb!",
+    "Right on the money!",
+    "You just leveled up!",
+    "That was epic!",
+    "You could be a trivia superhero!",
+    "Keep smashing it!"
 ];
 const ENCOURAGEMENTS_INCORRECT = [
-    "Don't worry, you'll get the next one!",
-    "Keep trying!",
-    "Almost! Don't give up!",
-    "Stay positive!",
-    "You can do it!",
-    "Keep your head up!",
-    "The next one is yours!",
-    "Mistakes help us learn!",
-    "Keep going!",
-    "Try again!"
+    "Even Batman misses sometimes!",
+    "Plot twist! Try again.",
+    "Villains never win—heroes keep going!",
+    "Shake it off, hero!",
+    "Every hero has setbacks!",
+    "You dodged that one—next time, aim true!",
+    "Not all heroes get it right the first time!",
+    "The comeback is always stronger!",
+    "Zap! But you'll bounce back!",
+    "Keep your cape on—next one's yours!"
 ];
 function getRandomEncouragement(isCorrect) {
     const arr = isCorrect ? ENCOURAGEMENTS_CORRECT : ENCOURAGEMENTS_INCORRECT;
@@ -814,7 +807,8 @@ function setLoadingProgress(percent) {
 // --- Asset Preload Logic ---
 const audioElements = [
     'audio-correct-1','audio-correct-2','audio-wrong','audio-timeup','audio-riser','audio-bg','audio-timer-tick','audio-ticking-time',
-    'audio-streak-wowza','audio-streak-zing','audio-streak-kawabanga','audio-streak-letsgo','audio-streak-nice'
+    'audio-streak-wowza','audio-streak-zing','audio-streak-kawabanga','audio-streak-letsgo','audio-streak-nice',
+    'audio-transition', 'audio-transition2'
 ].map(id => document.getElementById(id)).filter(Boolean);
 
 function preloadAudioAssets(onProgress, onComplete) {
@@ -856,7 +850,8 @@ document.addEventListener('DOMContentLoaded', () => {
     categoryDropdown = document.getElementById('category-dropdown');
     
     // Category Dropdown Population
-    const categories = Array.from(new Set(gameQuestions.map(q => q.category)));
+    let categories = Array.from(new Set(gameQuestions.map(q => q.category)));
+    categories = categories.filter(cat => cat && cat !== 'undefined');
     if (categoryDropdown) {
         categoryDropdown.innerHTML = '<option value="All">All Categories</option>' +
             categories.map(cat => `<option value="${cat}">${cat}</option>`).join('');
@@ -890,15 +885,15 @@ document.addEventListener('DOMContentLoaded', () => {
         blueTeamQuestions = []; // Reset blue team questions
 
         // --- NEW: CHECK FOR TIME ATTACK MODE ---
-        isTimeAttackMode = document.getElementById('time-attack-checkbox').checked;
+        isTimeAttackMode = false; // Force disable time attack mode
 
         // Filter questions by category first
         const selectedCategory = categoryDropdown.value;
         let availableQuestions;
         if (selectedCategory === 'All') {
-            availableQuestions = [...gameQuestions];
+            availableQuestions = shuffle([...gameQuestions]);
         } else {
-            availableQuestions = gameQuestions.filter(q => q.category === selectedCategory);
+            availableQuestions = shuffle(gameQuestions.filter(q => q.category === selectedCategory));
         }
 
         if (isTimeAttackMode) {
@@ -1046,9 +1041,9 @@ document.addEventListener('DOMContentLoaded', () => {
         isLightningRound = (currentQuestionIndex > 0 && currentQuestionIndex % roundSize === 0);
         
         // Dynamic wager limits based on game state
+        TIME_LIMIT = 20;
+        
         if (isLightningRound) {
-            TIME_LIMIT = 10;
-            
             // Higher stakes for lightning rounds
             if (gameMode === 'solo') {
                 // In solo mode, base max wager on current score (min 40, max 100)
@@ -1058,8 +1053,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 maxWagerValue = 40;
             }
         } else {
-            TIME_LIMIT = 15;
-            
             if (gameMode === 'solo') {
                 // In solo mode, base max wager on current score (min 20, max 50)
                 maxWagerValue = Math.max(20, Math.min(50, Math.floor(playerScore * 0.25)));
@@ -1113,16 +1106,34 @@ document.addEventListener('DOMContentLoaded', () => {
         explanationDiv.innerText = '';
         // Set prophecy mode if needed
         const currentQ = questions[currentQuestionIndex];
+        const bgVideo = document.getElementById('background-video');
         if (currentQ && (currentQ.category === 'Prophecy' || currentQ.category === 'The Great Controversy')) {
             document.body.classList.add('prophecy-mode');
+            if (bgVideo && bgVideo.src && !bgVideo.src.endsWith('background%202.mp4') && !bgVideo.src.endsWith('background 2.mp4')) {
+                bgVideo.src = 'background 2.mp4';
+                bgVideo.load();
+                bgVideo.play().catch(()=>{});
+            }
         } else {
             document.body.classList.remove('prophecy-mode');
+            if (bgVideo && bgVideo.src && !bgVideo.src.endsWith('background.mp4')) {
+                bgVideo.src = 'background.mp4';
+                bgVideo.load();
+                bgVideo.play().catch(()=>{});
+            }
         }
         // Set diet & health theme if needed
-        if (currentQ && currentQ.category === 'Diet & Health') {
-            document.body.classList.add('diet-health-theme');
+        // REMOVE the following lines so health questions use the default theme
+        // if (currentQ && currentQ.category === 'Diet & Health') {
+        //     document.body.classList.add('diet-health-theme');
+        // } else {
+        //     document.body.classList.remove('diet-health-theme');
+        // }
+        // Set Bible theme if needed
+        if (currentQ && currentQ.category === 'Bible People') {
+            // document.body.classList.add('bible-theme');
         } else {
-            document.body.classList.remove('diet-health-theme');
+            // document.body.classList.remove('bible-theme');
         }
         // Fade in new question/options
         setTimeout(() => {
@@ -1185,6 +1196,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 else teamBlackScore += points;
             }
             selectedBtn.classList.add('correct');
+            selectedBtn.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                selectedBtn.style.transform = '';
+            }, 300);
         } else {
             playSound(audioWrong);
             shakeElement(selectedBtn);
@@ -1197,6 +1212,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentStreak = 0;
             }
             selectedBtn.classList.add('incorrect');
+            // Show correct answer with highlight
+            Array.from(optionsDiv.children).forEach(btn => {
+                if (btn.innerText === questions[currentQuestionIndex].answer) {
+                    btn.classList.add('correct', 'highlight-correct');
+                }
+            });
         }
         
         if (gameMode === 'solo') updateSoloStats();
@@ -1914,18 +1935,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 explanationDiv.style.opacity = '1';
             }, 300);
         }
-        
-        // Enhanced fade out with slight delay between elements for better visual flow
-        fadeOut(document.querySelector('.question'), () => {
-            fadeOut(document.querySelector('.options'), () => {
-                currentQuestionIndex++;
-                if (currentQuestionIndex < questions.length) {
-                    // Add a slight delay before showing the next question for smoother transition
-                    setTimeout(() => {
-                        showQuestion();
-                    }, 100);
-                }
-                else showEndScreen();
+        // Determine if next question is prophecy
+        const nextQ = questions[currentQuestionIndex + 1];
+        const isProphecy = nextQ && (nextQ.category === 'Prophecy' || nextQ.category === 'The Great Controversy');
+        // Show glitch effect and play sound, then fade out and show next
+        showGlitchTransition(isProphecy, () => {
+            fadeOut(document.querySelector('.question'), () => {
+                fadeOut(document.querySelector('.options'), () => {
+                    currentQuestionIndex++;
+                    if (currentQuestionIndex < questions.length) {
+                        setTimeout(() => {
+                            showQuestion();
+                        }, 100);
+                    } else showEndScreen();
+                });
             });
         });
     };
@@ -1977,3 +2000,232 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service-worker.js');
   });
 }
+
+// --- Add ripple effect to buttons ---
+function addRippleEffect(e) {
+    const button = e.currentTarget;
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    const rect = button.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
+    ripple.style.top = (e.clientY - rect.top - size/2) + 'px';
+    button.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+}
+function attachRippleToButtons() {
+    document.querySelectorAll('.comic-button, .options button').forEach(btn => {
+        btn.removeEventListener('click', addRippleEffect);
+        btn.addEventListener('click', addRippleEffect);
+    });
+}
+// --- Add pop/bounce effect to answer selection ---
+function popButton(btn) {
+    btn.classList.remove('button-pop');
+    void btn.offsetWidth;
+    btn.classList.add('button-pop');
+}
+// --- Add glow/pulse to Next button when available ---
+function setNextButtonGlow(on) {
+    if (on) nextBtn.classList.add('glow-pulse');
+    else nextBtn.classList.remove('glow-pulse');
+}
+// --- Animate progress bar for question count ---
+function updateProgressBar() {
+    const progressBar = document.getElementById('progress-bar');
+    if (progressBar) {
+        const percent = ((currentQuestionIndex + 1) / questions.length) * 100;
+        progressBar.style.width = percent + '%';
+    }
+}
+// --- Patch into existing logic ---
+// After DOMContentLoaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachRippleToButtons);
+} else {
+    attachRippleToButtons();
+}
+// Patch showQuestion to call attachRippleToButtons and updateProgressBar
+const origShowQuestion = window.showQuestion;
+window.showQuestion = function() {
+    origShowQuestion.apply(this, arguments);
+    attachRippleToButtons();
+    updateProgressBar();
+    setNextButtonGlow(false);
+};
+// Patch answer selection to pop/bounce and enable Next button glow
+const origSelectAnswer = window.selectAnswer;
+window.selectAnswer = function(e) {
+    const btn = e.target;
+    popButton(btn);
+    origSelectAnswer.apply(this, arguments);
+    setNextButtonGlow(true);
+};
+// Patch Next button to remove glow on click
+nextBtn.addEventListener('click', () => setNextButtonGlow(false));
+
+// --- Animated backgrounds and category-based backgrounds ---
+function setCategoryBackground(category) {
+    document.body.classList.remove('prophecy-bg', 'diet-health-bg', 'animated-gradient');
+    const video = document.getElementById('background-video');
+    if (video) {
+        video.style.filter = '';
+        video.style.opacity = '0.45';
+        video.style.mixBlendMode = 'screen';
+        // Always show video, but adjust for prophecy
+        if (category === 'Prophecy' || category === 'The Great Controversy') {
+            video.style.filter = 'contrast(1.5) brightness(0.7) grayscale(0.2)';
+            video.style.opacity = '0.7';
+            video.style.mixBlendMode = 'multiply';
+            // Add a dark overlay for drama
+            if (!document.getElementById('prophecy-overlay')) {
+                const overlay = document.createElement('div');
+                overlay.id = 'prophecy-overlay';
+                overlay.style.position = 'fixed';
+                overlay.style.top = '0';
+                overlay.style.left = '0';
+                overlay.style.width = '100vw';
+                overlay.style.height = '100vh';
+                overlay.style.background = 'rgba(10,10,20,0.55)';
+                overlay.style.zIndex = '1';
+                overlay.style.pointerEvents = 'none';
+                document.body.appendChild(overlay);
+            }
+        } else {
+            video.style.filter = '';
+            video.style.opacity = '0.45';
+            video.style.mixBlendMode = 'screen';
+            const overlay = document.getElementById('prophecy-overlay');
+            if (overlay) overlay.remove();
+        }
+        // Ensure video is always looped and playing
+        if (video.paused) video.play();
+        video.loop = true;
+    }
+}
+// --- Simple animated particles for background canvas ---
+function startParticles() {
+    const canvas = document.getElementById('background-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w = window.innerWidth, h = window.innerHeight;
+    canvas.width = w; canvas.height = h;
+    let particles = Array.from({length: 24}, () => ({
+        x: Math.random()*w, y: Math.random()*h,
+        r: Math.random()*2+1, dx: (Math.random()-0.5)*0.5, dy: (Math.random()-0.5)*0.5,
+        color: `hsla(${Math.random()*360},80%,70%,0.7)`
+    }));
+    function animate() {
+        ctx.clearRect(0,0,w,h);
+        for (let p of particles) {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, 2*Math.PI);
+            ctx.fillStyle = p.color;
+            ctx.fill();
+            p.x += p.dx; p.y += p.dy;
+            if (p.x<0||p.x>w) p.dx*=-1;
+            if (p.y<0||p.y>h) p.dy*=-1;
+        }
+        requestAnimationFrame(animate);
+    }
+    animate();
+    window.addEventListener('resize', () => {
+        w = window.innerWidth; h = window.innerHeight;
+        canvas.width = w; canvas.height = h;
+    });
+}
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startParticles);
+} else {
+    startParticles();
+}
+// --- Patch showQuestion to set category background ---
+const origShowQuestion2 = window.showQuestion;
+window.showQuestion = function() {
+    origShowQuestion2.apply(this, arguments);
+    const q = questions[currentQuestionIndex];
+    setCategoryBackground(q && q.category);
+};
+// --- Simple animated VHS grain effect for background canvas ---
+function startVHSGrain() {
+    const canvas = document.getElementById('background-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w = window.innerWidth, h = window.innerHeight;
+    canvas.width = w; canvas.height = h;
+    function drawGrain() {
+        const imageData = ctx.createImageData(w, h);
+        for (let i = 0; i < imageData.data.length; i += 4) {
+            const shade = 16 + Math.floor(Math.random() * 32); // subtle grain
+            imageData.data[i] = shade;
+            imageData.data[i+1] = shade;
+            imageData.data[i+2] = shade;
+            imageData.data[i+3] = 18 + Math.floor(Math.random() * 22); // low alpha
+        }
+        ctx.putImageData(imageData, 0, 0);
+        // Add scanlines
+        ctx.save();
+        ctx.globalAlpha = 0.08;
+        ctx.fillStyle = '#fff';
+        for (let y = 0; y < h; y += 3) {
+            ctx.fillRect(0, y, w, 1);
+        }
+        ctx.restore();
+        // Add subtle flicker
+        canvas.style.opacity = 0.7 + Math.random() * 0.08;
+        requestAnimationFrame(drawGrain);
+    }
+    drawGrain();
+    window.addEventListener('resize', () => {
+        w = window.innerWidth; h = window.innerHeight;
+        canvas.width = w; canvas.height = h;
+    });
+}
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startVHSGrain);
+} else {
+    startVHSGrain();
+}
+
+// --- Glitchy Transition Overlay ---
+function showGlitchTransition(isProphecy, cb) {
+    // Remove any existing glitch overlays
+    const old = document.getElementById('glitch-transition-overlay');
+    if (old) old.remove();
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'glitch-transition-overlay';
+    overlay.className = 'glitch-effect';
+    overlay.innerText = '✝️';
+    overlay.style.position = 'fixed';
+    overlay.style.left = '50%';
+    overlay.style.top = '50%';
+    overlay.style.transform = 'translate(-50%, -50%)';
+    overlay.style.fontSize = '10vw';
+    overlay.style.zIndex = 9999;
+    overlay.style.pointerEvents = 'none';
+    overlay.style.opacity = '0.93';
+    overlay.style.textAlign = 'center';
+    overlay.style.userSelect = 'none';
+    document.body.appendChild(overlay);
+    // Play sound
+    playSound(isProphecy ? audioTransition2 : audioTransition);
+    // Remove after 650ms
+    setTimeout(() => {
+        overlay.remove();
+        if (cb) cb();
+    }, 650);
+}
+
+explanationDiv.style.fontSize = '1.35rem';
+explanationDiv.style.background = 'rgba(255,255,255,0.92)';
+explanationDiv.style.color = '#222';
+explanationDiv.style.border = '2.5px solid #ffd700';
+explanationDiv.style.borderRadius = '16px';
+explanationDiv.style.boxShadow = '0 2px 18px #ffd70044, 0 0 8px #fff8';
+explanationDiv.style.padding = '1.2rem 1.5rem';
+explanationDiv.style.margin = '1.5rem auto 0 auto';
+explanationDiv.style.maxWidth = '95%';
+explanationDiv.style.textAlign = 'left';
+explanationDiv.style.display = 'none';

@@ -1,10 +1,13 @@
-const CACHE_NAME = 'sda-trivia-v1';
+const CACHE_NAME = 'sda-trivia-v2';
 const ASSETS = [
   '/',
   '/index.html',
   '/styles.css',
   '/script.js',
   '/questions.js',
+  '/manifest.json',
+  '/icon-192.png',
+  '/icon-512.png',
   // Add all audio/image assets here
   '/Fear God.png',
   '/correct_answer_1.wav',
@@ -19,6 +22,7 @@ const ASSETS = [
   '/kawabanga.mp3',
   '/lets_go.mp3',
   '/nice.mp3',
+  // '/offline.html', // Uncomment if you add an offline fallback page
 ];
 self.addEventListener('install', event => {
   event.waitUntil(
@@ -26,8 +30,30 @@ self.addEventListener('install', event => {
   );
 });
 self.addEventListener('fetch', event => {
+  // SPA navigation fallback
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      caches.match('/index.html').then(response => response || fetch(event.request))
+    );
+    return;
+  }
+  // Stale-while-revalidate (optional, for assets like questions.js)
+  // if (event.request.url.endsWith('questions.js')) {
+  //   event.respondWith(
+  //     caches.open(CACHE_NAME).then(cache =>
+  //       fetch(event.request).then(response => {
+  //         cache.put(event.request, response.clone());
+  //         return response;
+  //       }).catch(() => caches.match(event.request))
+  //     )
+  //   );
+  //   return;
+  // }
+  // Error handling/offline fallback
   event.respondWith(
-    caches.match(event.request).then(response => response || fetch(event.request))
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request).catch(() => caches.match('/offline.html'));
+    })
   );
 });
 self.addEventListener('activate', event => {

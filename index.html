@@ -51,19 +51,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SDA Trivia Challenge</title>
+    <title>Pillars of Faith</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Remove Google Fonts, we will use local Montserrat fonts -->
     <script src="questions.js" defer></script>
     <script src="script.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/confetti-js/dist/index.min.js"></script>
 </head>
 <body>
+<video id="background-video" src="background.mp4" autoplay loop muted playsinline style="position:fixed;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:0;pointer-events:none;opacity:0.45;mix-blend-mode:screen;"></video>
+<canvas id="background-canvas"></canvas>
     <div id="loading-overlay" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;background:rgba(30,32,40,0.95);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 0.4s;">
-        <div style="color:#ffd700;font-family:'Bangers',cursive;font-size:2.2rem;text-shadow:0 0 12px #111;">Loading Trivia Game...</div>
+        <div style="color:#ffd700;font-family:'Montserrat-Regular', Arial, sans-serif;font-size:2.2rem;text-shadow:0 0 12px #111;">Loading Pillars of Faith...</div>
         <div id="loading-progress" style="margin-top:1.2rem;width:60vw;max-width:320px;height:12px;background:#333;border-radius:8px;overflow:hidden;">
             <div id="loading-bar" style="height:100%;width:0%;background:linear-gradient(90deg,#ffd700,#ff4b5c);transition:width 0.3s;"></div>
         </div>
@@ -75,8 +74,7 @@
     <div class="feedback-overlay"></div>
     <canvas id="confetti-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100;"></canvas>
     <div class="container" style="min-width:320px;max-width:700px;width:95vw;margin:auto;">
-        <h1>SDA Trivia Challenge</h1>
-        <p>Test your knowledge from The Great Controversy, Counsels on Diet and Foods, Last Day Events, Music, and the KJV Bible!</p>
+        <h1 class="glitch-effect">Pillars of Faith</h1>
         <div id="category-select" class="category-select" style="margin-bottom: 1.2rem;">
             <label for="category-dropdown">Choose Category:</label>
             <select id="category-dropdown" aria-label="Select question category"></select>
@@ -84,7 +82,7 @@
         <p class="intro-text">Embark on a thrilling quest to defend truth in the great controversy! Your answers matter—unlock achievements and become a guardian of faith!</p>
         <div id="fun-fact-box"></div>
         <div id="game-length-container" style="margin-bottom: 1.2rem; text-align: center;">
-            <label for="game-length-select" style="font-family: 'Bangers', cursive; font-size: 1.1rem; color: #ffd700; margin-right: 0.5em;">Number of Questions:</label>
+            <label for="game-length-select" style="font-family: 'Montserrat-Regular', Arial, sans-serif; font-size: 1.1rem; color: #ffd700; margin-right: 0.5em;">Number of Questions:</label>
             <select id="game-length-select" aria-label="Select number of questions" style="font-size: 1.1rem; border-radius: 8px; padding: 0.3em 1em; border: 2px solid #ffd700;">
                 <option value="10">10</option>
                 <option value="20" selected>20</option>
@@ -93,8 +91,8 @@
             </select>
         </div>
         <div id="time-attack-container" style="margin-bottom: 1.2rem; text-align: center; display: flex; justify-content: center; align-items: center; gap: 0.5rem;">
-            <label for="time-attack-checkbox" style="font-family: 'Bangers', cursive; font-size: 1.1rem; color: #ff4b5c;">Time Attack Mode:</label>
-            <input type="checkbox" id="time-attack-checkbox" style="width: 20px; height: 20px; cursor: pointer;">
+            <label for="time-attack-checkbox" style="font-family: 'Montserrat-Regular', Arial, sans-serif; font-size: 1.1rem; color: #ff4b5c; opacity: 0.5; pointer-events: none; user-select: none;">Time Attack Mode (disabled)</label>
+            <input type="checkbox" id="time-attack-checkbox" style="width: 20px; height: 20px; cursor: not-allowed; opacity: 0.5;" disabled>
         </div>
 
         <div class="buttons">
@@ -116,7 +114,7 @@
         </div>
         <div id="progress-bar-container"><div id="progress-bar"></div></div>
         <div id="wager-container" style="display: flex; align-items: center; justify-content: center; gap: 0.7rem; margin-bottom: 0.7rem;">
-            <label for="wager-input" style="font-family: 'Bangers', cursive;">Wager:</label>
+            <label for="wager-input" style="font-family: 'Montserrat-Regular', Arial, sans-serif;">Wager:</label>
             <input type="number" id="wager-input" min="1" max="20" value="5" style="width: 60px; font-size: 1.1rem; border-radius: 6px; border: 2px solid #111; padding: 2px 6px;">
         </div>
         <div class="score-solo" id="score-solo">
@@ -164,7 +162,7 @@
         </div>
         <!-- Leaderboard section -->
         <div id="leaderboard-filter" style="text-align:center; margin-bottom:0.5em; display:none;">
-            <label for="leaderboard-question-count" style="font-family:'Bangers',cursive; font-size:1.1em; color:#388e3c;">Leaderboard for: </label>
+            <label for="leaderboard-question-count" style="font-family:'Montserrat-Regular', Arial, sans-serif; font-size:1.1em; color:#388e3c;">Leaderboard for: </label>
             <select id="leaderboard-question-count" style="font-size:1.1em; border-radius:8px; padding:0.2em 1em; border:2px solid #388e3c;">
                 <option value="10">10 Questions</option>
                 <option value="20">20 Questions</option>
@@ -208,5 +206,7 @@
     <audio id="audio-streak-kawabanga" src="kawabanga.mp3" preload="auto"></audio>
     <audio id="audio-streak-letsgo" src="lets_go.mp3" preload="auto"></audio>
     <audio id="audio-streak-nice" src="nice.mp3" preload="auto"></audio>
+    <audio id="audio-transition" src="Transition.wav" preload="auto"></audio>
+    <audio id="audio-transition2" src="Transition 2.wav" preload="auto"></audio>
 </body>
 </html>
