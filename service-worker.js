@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sda-trivia-v2';
+const CACHE_NAME = 'sda-trivia-v3';
 const ASSETS = [
   '/',
   '/index.html',
@@ -23,7 +23,7 @@ const ASSETS = [
   '/lets_go.mp3',
   '/nice.mp3',
   '/Background.mp4',
-  '/Background 2.mp4',
+  '/Background%202.mp4',
   // '/offline.html', // Uncomment if you add an offline fallback page
 ];
 self.addEventListener('install', event => {
