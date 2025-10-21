@@ -22,6 +22,8 @@ const ASSETS = [
   '/kawabanga.mp3',
   '/lets_go.mp3',
   '/nice.mp3',
+  '/Background.mp4',
+  '/Background 2.mp4',
   // '/offline.html', // Uncomment if you add an offline fallback page
 ];
 self.addEventListener('install', event => {
