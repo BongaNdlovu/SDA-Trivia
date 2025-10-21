@@ -1983,6 +1983,68 @@ function updateTimerDisplay(timeLeft) {
     }
 }
 
+// --- Network Request Debugging ---
+console.log('🔍 Starting network request debugging...');
+
+// Monitor all network requests
+const originalFetch = window.fetch;
+window.fetch = function(...args) {
+  const url = args[0];
+  console.log('🌐 Fetch request:', url);
+  if (typeof url === 'string' && url.includes('Background')) {
+    console.log('🎥 Background video request detected:', url);
+    console.trace('Stack trace for Background request:');
+  }
+  return originalFetch.apply(this, args);
+};
+
+// Monitor XMLHttpRequest
+const originalXHR = window.XMLHttpRequest;
+window.XMLHttpRequest = function() {
+  const xhr = new originalXHR();
+  const originalOpen = xhr.open;
+  xhr.open = function(method, url, ...args) {
+    console.log('🌐 XHR request:', method, url);
+    if (typeof url === 'string' && url.includes('Background')) {
+      console.log('🎥 Background video XHR request detected:', url);
+      console.trace('Stack trace for Background XHR request:');
+    }
+    return originalOpen.apply(this, [method, url, ...args]);
+  };
+  return xhr;
+};
+
+// Monitor video element loading
+document.addEventListener('DOMContentLoaded', () => {
+  const video = document.getElementById('background-video');
+  if (video) {
+    console.log('🎥 Video element found:', video);
+    console.log('🎥 Video src:', video.src);
+    console.log('🎥 Video currentSrc:', video.currentSrc);
+    
+    // Monitor video events
+    video.addEventListener('loadstart', () => {
+      console.log('🎥 Video loadstart event');
+    });
+    
+    video.addEventListener('loadeddata', () => {
+      console.log('🎥 Video loadeddata event');
+    });
+    
+    video.addEventListener('error', (e) => {
+      console.error('🎥 Video error event:', e);
+    });
+    
+    video.addEventListener('canplay', () => {
+      console.log('🎥 Video canplay event');
+    });
+    
+    // Check if video is trying to load
+    console.log('🎥 Video readyState:', video.readyState);
+    console.log('🎥 Video networkState:', video.networkState);
+  }
+});
+
 // --- Service Worker Registration ---
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
