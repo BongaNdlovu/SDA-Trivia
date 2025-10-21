@@ -1106,21 +1106,10 @@ document.addEventListener('DOMContentLoaded', () => {
         explanationDiv.innerText = '';
         // Set prophecy mode if needed
         const currentQ = questions[currentQuestionIndex];
-        const bgVideo = document.getElementById('background-video');
         if (currentQ && (currentQ.category === 'Prophecy' || currentQ.category === 'The Great Controversy')) {
             document.body.classList.add('prophecy-mode');
-            if (bgVideo && bgVideo.src && !bgVideo.src.endsWith('Background%202.mp4') && !bgVideo.src.endsWith('Background%202.mp4') && !bgVideo.src.endsWith('Background 2.mp4')) {
-                bgVideo.src = 'Background%202.mp4';
-                bgVideo.load();
-                bgVideo.play().catch(()=>{});
-            }
         } else {
             document.body.classList.remove('prophecy-mode');
-            if (bgVideo && bgVideo.src && !bgVideo.src.endsWith('Background.mp4')) {
-                bgVideo.src = 'Background.mp4';
-                bgVideo.load();
-                bgVideo.play().catch(()=>{});
-            }
         }
         // Set diet & health theme if needed
         // REMOVE the following lines so health questions use the default theme
