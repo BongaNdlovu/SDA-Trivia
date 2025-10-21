@@ -57,9 +57,29 @@
     <script src="questions.js" defer></script>
     <script src="script.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/confetti-js/dist/index.min.js"></script>
+    <script>
+        // Debug script to monitor network requests
+        const originalFetch = window.fetch;
+        window.fetch = function(...args) {
+            const url = args[0];
+            if (typeof url === 'string' && (url.includes('Background') || url.includes('.mp4'))) {
+                console.log('Fetch request detected:', url, 'Stack trace:', new Error().stack);
+            }
+            return originalFetch.apply(this, args);
+        };
+        
+        // Monitor XMLHttpRequest
+        const originalXHROpen = XMLHttpRequest.prototype.open;
+        XMLHttpRequest.prototype.open = function(method, url, ...args) {
+            if (typeof url === 'string' && (url.includes('Background') || url.includes('.mp4'))) {
+                console.log('XHR request detected:', url, 'Stack trace:', new Error().stack);
+            }
+            return originalXHROpen.apply(this, [method, url, ...args]);
+        };
+    </script>
 </head>
 <body>
-<video id="background-video" src="./Background.mp4" autoplay loop muted playsinline style="position:fixed;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:0;pointer-events:none;opacity:0.45;mix-blend-mode:screen;"></video>
+<video id="background-video" src="./Background.mp4" autoplay loop muted playsinline style="position:fixed;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:0;pointer-events:none;opacity:0.45;mix-blend-mode:screen;" onerror="console.log('Video error:', this.src, event);" onloadstart="console.log('Video loading:', this.src);"></video>
 <canvas id="background-canvas"></canvas>
     <div id="loading-overlay" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;background:rgba(30,32,40,0.95);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 0.4s;">
         <div style="color:#ffd700;font-family:'Montserrat-Regular', Arial, sans-serif;font-size:2.2rem;text-shadow:0 0 12px #111;">Loading Pillars of Faith...</div>

@@ -31,6 +31,11 @@ self.addEventListener('install', event => {
   );
 });
 self.addEventListener('fetch', event => {
+  // Debug logging for video requests
+  if (event.request.url.includes('Background') || event.request.url.includes('.mp4')) {
+    console.log('Service Worker: Video request detected:', event.request.url);
+  }
+  
   // SPA navigation fallback
   if (event.request.mode === 'navigate') {
     event.respondWith(
