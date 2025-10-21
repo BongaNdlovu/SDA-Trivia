@@ -31,6 +31,17 @@ self.addEventListener('install', event => {
   );
 });
 self.addEventListener('fetch', event => {
+  // Debug all network requests
+  console.log('🔍 Service Worker intercepted request:', event.request.url);
+  
+  // Special debugging for Background video requests
+  if (event.request.url.includes('Background')) {
+    console.log('🎥 Background video request intercepted by service worker');
+    console.log('🎥 Request URL:', event.request.url);
+    console.log('🎥 Request method:', event.request.method);
+    console.log('🎥 Request headers:', [...event.request.headers.entries()]);
+  }
+  
   // SPA navigation fallback
   if (event.request.mode === 'navigate') {
     event.respondWith(
@@ -53,7 +64,16 @@ self.addEventListener('fetch', event => {
   // Error handling/offline fallback
   event.respondWith(
     caches.match(event.request).then(response => {
-      return response || fetch(event.request).catch(() => caches.match('/offline.html'));
+      if (response) {
+        console.log('✅ Serving from cache:', event.request.url);
+        return response;
+      } else {
+        console.log('🌐 Fetching from network:', event.request.url);
+        return fetch(event.request).catch(error => {
+          console.error('❌ Network fetch failed:', event.request.url, error);
+          return caches.match('/offline.html');
+        });
+      }
     })
   );
 });
