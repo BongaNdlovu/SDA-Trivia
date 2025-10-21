@@ -1109,8 +1109,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const bgVideo = document.getElementById('background-video');
         if (currentQ && (currentQ.category === 'Prophecy' || currentQ.category === 'The Great Controversy')) {
             document.body.classList.add('prophecy-mode');
-            if (bgVideo && bgVideo.src && !bgVideo.src.endsWith('Background%202.mp4') && !bgVideo.src.endsWith('Background 2.mp4')) {
-                bgVideo.src = 'Background 2.mp4';
+            if (bgVideo && bgVideo.src && !bgVideo.src.endsWith('Background%202.mp4') && !bgVideo.src.endsWith('Background%202.mp4') && !bgVideo.src.endsWith('Background 2.mp4')) {
+                bgVideo.src = 'Background%202.mp4';
                 bgVideo.load();
                 bgVideo.play().catch(()=>{});
             }
